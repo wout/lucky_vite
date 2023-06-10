@@ -22,17 +22,48 @@ dependencies:
 
 ## Setup
 
-First run `bin/lucky_vite --init` to generate a basic setup. It will create the following files:
+There are a few things to set up and change to finalize the installation.
+
+First, run `bin/lucky_vite --init` to generate a basic setup. It will create the following files:
 
 - `config/lucky_vite.json`: the shared config for Lucky and Vite
 - `vite.config.js`: the Vite config loading `vite-plugin-lucky`
 - `src/js/entry/main.js`: the first entry point with a basic setup
 - `src/css/main.css`: an empty stylesheet which is referenced by `main.js`
 
-You'll also need to replace the `Lucky::AssetHelpers.load_manifest` line in `src/app.cr` with:
+Then you'll need to replace the `Lucky::AssetHelpers.load_manifest` line in `src/app.cr` with:
 
-```crystal
-LuckyVite::AssetHelpers.load_manifest("public/assets/manifest.json")
+```diff
+-Lucky::AssetHelpers.load_manifest "public/mix-manifest.json"
++LuckyVite::AssetHelpers.load_manifest "public/assets/manifest.json"
+```
+
+And update the `Procfile.dev` by removing the `assets` process and adding the two following ones:
+
+```diff
+system_check: script/system_check && sleep 100000
+web: lucky watch --reload-browser
+-assets: yarn watch
++vite_server: yarn vite
++vite_watcher: yarn watch
+```
+
+Finally, change the scripts section in `package.json` to use vite instead of laravel mix:
+
+```diff
+{
+  // ...
+  "scripts": {
+-    "heroku-postbuild": "yarn prod",
+-    "dev": "yarn run mix",
+-    "watch": "yarn run mix watch",
+-    "prod": "yarn run mix --production",
++    "heroku-postbuild": "yarn build",
++    "build": "yarn run vite build",
++    "watch": "yarn run vite build --watch"
+  },
+  // ...
+}
 ```
 
 ## Usage
