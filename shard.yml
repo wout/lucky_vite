@@ -7,3 +7,19 @@ authors:
 crystal: 1.8.2
 
 license: MIT
+
+dependencies:
+  lucky_template:
+    github: luckyframework/lucky_template
+    version: ~> 0.1.0\
+
+development_dependencies:
+  ameba:
+    github: crystal-ameba/ameba
+    version: ~> 1.1.0
+  spec_mirror:
+    github: wout/spec_mirror.cr
+    branch: master
+
+scripts:
+  postinstall: make shim

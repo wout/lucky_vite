@@ -1,0 +1,15 @@
+#!/bin/sh
+
+crystal_bin=`which crystal`
+lucky_vite_bin=./bin/lucky_vite_bin
+source_file=./lib/lucky_vite/tasks/runner.cr
+
+if [ ! -f $lucky_vite_bin ]
+then
+  echo "Looks like the first time, generating the lucky_vite binary..."
+  $crystal_bin build $source_file -o $lucky_vite_bin
+  sleep 1
+  echo "Done!"
+fi
+
+$lucky_vite_bin $*
