@@ -24,7 +24,7 @@ dependencies:
 
 There are a few things to set up and change to finalize the installation.
 
-First, run `bin/lucky_vite --init` to generate a basic setup. It will create the following files:
+First, run `bin/lucky_vite --init` to create the following files:
 
 - `config/lucky_vite.json`: the shared config for Lucky and Vite
 - `vite.config.js`: the Vite config loading `vite-plugin-lucky`
