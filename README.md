@@ -1,10 +1,12 @@
 <h1 align="center">
   <img src="https://raw.githubusercontent.com/wout/lucky_vite/main/logo.svg" width="200px"/>
+
+  <br>
+
+  Lucky Vite
 </h1>
 
-# LuckyVite
-
-A Crystal shard to seamlessly integrate [Vite](https://vitejs.dev/) into [Lucky Framework](https://luckyframework.org/).
+A Crystal shard to seamlessly integrate [Vite](https://vitejs.dev/) with [Lucky Framework](https://luckyframework.org/).
 
 ## Installation
 
@@ -68,21 +70,23 @@ Finally, change the scripts section in `package.json` to use vite instead of lar
 
 ## Usage
 
-Include the shard:
+Start by including the shard in your app:
 
 ```crystal
 # in src/shards.cr
 require "lucky_vite"
 ```
 
-Include the vite tags in the head of your page:
+And adding the vite tags in the head of your page:
 
 ```crystal
 # src/components/shared/layout_head.cr
 vite_entry_tags "main.js"
 ```
 
-This macro does a bunch of things. In development, it loads `@vite/client` and the given entry script. Vite will dynamically load any stylesheets imported in the entry script. In production, it will load the static versions from the manifest and create individual tags for all of them. With this macro, the whole frontend is served.
+This macro does a bunch of things. In development, it loads `@vite/client` and the given entry script. Vite will dynamically load any stylesheets imported in the entry script.
+
+In production, it will load the static versions from the manifest and create individual tags for all of them, including stylesheets. With this macro, the whole frontend is served.
 
 As a second argument, it accepts a named tuple for any attributes you'd want on the generated tags:
 
@@ -90,7 +94,7 @@ As a second argument, it accepts a named tuple for any attributes you'd want on 
 vite_entry_tags "main.js", {data_turbo_track: "reload"}
 ```
 
-If you want more control over the individual tags, we've got you covered:
+You can get more control over the individual tags by using the following three methods:
 
 ```crystal
 vite_client_tag
@@ -98,7 +102,7 @@ vite_js_link "main.js", {async: true}
 vite_css_link "main.css"
 ```
 
-The three individual methods above do the exact same thing as `vite_entry_tags`. Note that `vite_css_link` will not output anything in development.
+They do the exact same thing as `vite_entry_tags`. Note that `vite_css_link` will not output anything in development.
 
 If you need even more control over the generated tags, you can use the `vite_asset` macro in combination with Lucky's `js_link` and `css_link` methods:
 
