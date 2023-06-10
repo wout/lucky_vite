@@ -88,17 +88,17 @@ This macro does a bunch of things. In development, it loads `@vite/client` and t
 
 In production, it will load the static versions from the manifest and create individual tags for all of them, including stylesheets. With this macro, the whole frontend is served.
 
-As a second argument, it accepts a named tuple for any attributes you'd want on the generated tags:
+As a second argument, it accepts any attributes you'd want on the generated tags:
 
 ```crystal
-vite_entry_tags "main.js", {data_turbo_track: "reload"}
+vite_entry_tags "main.js", data_turbo_track: "reload"
 ```
 
 You can get more control over the individual tags by using the following three methods:
 
 ```crystal
 vite_client_tag
-vite_js_link "main.js", {async: true}
+vite_js_link "main.js", async: true
 vite_css_link "main.css"
 ```
 
