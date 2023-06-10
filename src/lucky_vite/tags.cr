@@ -74,6 +74,8 @@ module LuckyVite::Tags
   #
   # Only use this tag with `@vitejs/plugin-react`.
   def vite_react_refresh_tag
+    return unless LuckyEnv.development?
+
     script type: "module" do
       raw <<-REACT
         import RefreshRuntime from '#{LuckyVite.origin_with_path("@react-refresh")}'
