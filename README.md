@@ -18,7 +18,7 @@ dependencies:
 
 2. Run `shards install`
 
-3. Run `yarn add -D vite vite-plugin-lucky` to install vite and the plugin for lucky
+3. Run `yarn add -D vite vite-plugin-lucky` to install Vite and the plugin for Lucky
 
 ## Setup
 
@@ -35,47 +35,16 @@ You'll also need to replace the `Lucky::AssetHelpers.load_manifest` line in `src
 LuckyVite::AssetHelpers.load_manifest("public/assets/manifest.json")
 ```
 
-## Configuration
-
-Lucky and Vite share some information which is managed through the `config/lucky_vite.json` file. It comes with the following defaults:
-
-```json
-{
-  "aliases": {
-    "@css": "src/css",
-    "@js": "src/js",
-    "@images": "src/images",
-    "@fonts": "src/fonts"
-  },
-  "outDir": "public/assets",
-  "entry": "entry",
-  "host": "127.0.0.1",
-  "port": 3010,
-  "root": "src/js"
-}
-```
-
-Here's a bit more info about the available properties:
-
-- **`outDir`** (_`string`_): the target dir for vite; this will be cleared on every run
-- **`root`** (_`string`_): 
-- **`entry`** (_`string`_): this is where vite looks for entry scripts (e.g. `src/js/entry`)
-- **`https`** (_`boolean`_): uses `https:` for the vite server if set to `true`
-- **`host`** (_`string | boolean`_): the host name where the vite server will be listening; if set to `true`, it will listen on `0.0.0.0` (all addresses)
-- **`port`** (_`string | number`_): the port to listen on
-- **`origin`** (_`string`_): use the full uri; alternative to using `https`, `host` and `port`
-- **`aliases`** (_`object`_): helps to reference files (e.g. `@css/main.css` instead of `../css/main.css`)
-
-**Note**: not all vite's configuration options are recognised here. Please open an issue or a PR if you are missing some. Alternatively, you can add them manually in the `vite.config.js`.
-
 ## Usage
+
+Include the shard:
 
 ```crystal
 # in src/shards.cr
 require "lucky_vite"
 ```
 
-In your in the head of your page:
+Include the vite tags in the head of your page:
 
 ```crystal
 # src/components/shared/layout_head.cr
@@ -106,11 +75,13 @@ If you need even more control over the generated tags, you can use the `vite_ass
 css_link vite_asset("main.css")
 ```
 
-The `vite_asset` macro works exactly the same as Lucky's `asset` macro. Its `dynamic_asset` counterpart is also available:
+The `vite_asset` macro works exactly the same as Lucky's `asset` macro, so you can use it for images, fonts and other assets you may have. Its `dynamic_asset` counterpart is also available:
 
 ```crystal
 css_link dynamic_vite_asset("main.css")
 ```
+
+**Note**: Since LuckyVite is now managing the asset pipeline, Lucky's `asset` and `dynamic_asset` macros are no longer working.
 
 Finally, if you're using React with the `@vitejs/plugin-react` plugin, you need to add the `vite_react_refresh_tag` method before any other asset tags to inject the refresh runtime served by Vite:
 
@@ -119,6 +90,39 @@ vite_react_refresh_tag
 vite_client_tag
 # ...
 ```
+
+## Configuration
+
+Lucky and Vite share some information which is managed through the `config/lucky_vite.json` file. It comes with the following defaults:
+
+```json
+{
+  "aliases": {
+    "@css": "src/css",
+    "@js": "src/js",
+    "@images": "src/images",
+    "@fonts": "src/fonts"
+  },
+  "outDir": "public/assets",
+  "entry": "entry",
+  "host": "127.0.0.1",
+  "port": 3010,
+  "root": "src/js"
+}
+```
+
+Here's a bit more info about the available properties:
+
+- **`outDir`** (_`string`_): the target dir for vite; this will be cleared on every run
+- **`root`** (_`string`_): the javascript root (typically `src/js`)
+- **`entry`** (_`string`_): this is where vite looks for entry scripts (e.g. `src/js/entry`)
+- **`https`** (_`boolean`_): uses `https:` for the vite server if set to `true`
+- **`host`** (_`string | boolean`_): the host name where the vite server will be listening; if set to `true`, it will listen on `0.0.0.0` (all addresses)
+- **`port`** (_`string | number`_): the port to listen on
+- **`origin`** (_`string`_): use the full uri; alternative to using `https`, `host` and `port`
+- **`aliases`** (_`object`_): helps to reference files (e.g. `@css/main.css` instead of `../css/main.css`)
+
+**Note**: not all Vite's configuration options are recognised here. Please open an issue or a PR if you are missing some. Alternatively, you can also add them in `vite.config.js`.
 
 ## Development
 
