@@ -8,22 +8,21 @@ module LuckyVite::Tags
 
   # A one-stop shop for all your vite tags in development and production.
   #
-  # Additional tag attributes can be passed in as keyword arguments via
-  # the *options* `NamedTuple`.
+  # Additional tag attributes can be passed in as named arguments.
   #
   # Note: in development this method connects with the vite server; in other
   # environments it loads compiled files from the manifest.
-  macro vite_entry_tags(entry, options)
+  macro vite_entry_tags(entry, **options)
     if LuckyEnv.development?
       vite_client_tag
-      vite_js_link({{entry}}, {{options}})
+      vite_js_link {{entry}}{% unless options.empty? %}, {{**options}}{% end %}
     else
       asset = LuckyVite::AssetHelpers.vite_manifest_entry({{entry}})
-      js_link asset[:file], type: "module", {{**options}}
+      js_link asset[:file], type: "module"{% unless options.empty? %}, {{**options}}{% end %}
 
       if styles = asset[:css]?
         styles.each do |file|
-          css_link file, {{**options}}
+          css_link file{% unless options.empty? %}, {{**options}}{% end %}
         end
       end
     end
@@ -31,19 +30,17 @@ module LuckyVite::Tags
 
   # Generates a script tag for the given entrypoint.
   #
-  # Additional tag attributes can be passed in as keyword arguments via the
-  # *options* `NamedTuple`.
-  macro vite_js_link(entry, options)
-    js_link vite_asset({{entry}}), type: "module", {{**options}}
+  # Additional tag attributes can be passed in as named arguments.
+  macro vite_js_link(entry, **options)
+    js_link vite_asset({{entry}}), type: "module"{% unless options.empty? %}, {{**options}}{% end %}
   end
 
   # Generates a stylesheet link tag for the given entrypoint.
   #
-  # Additional tag attributes can be passed in keyword arguments via the
-  # *options* `NamedTuple`.
-  macro vite_css_link(entry, options)
+  # Additional tag attributes can be passed in as named arguments.
+  macro vite_css_link(entry, **options)
     unless LuckyEnv.development?
-      css_link LuckyVite::AssetHelpers.vite_asset({{entry}}), {{**options}}
+      css_link LuckyVite::AssetHelpers.vite_asset({{entry}}), {% unless options.empty? %}, {{**options}}{% end %}
     end
   end
 
@@ -54,6 +51,16 @@ module LuckyVite::Tags
       LuckyVite.origin_with_path({{entry}})
     else
       LuckyVite::AssetHelpers.vite_asset({{entry}})
+    end
+  end
+
+  # Loads an asset, without checking it's existance in the manifest, from the
+  # vite server in development or as a static file in production.
+  macro dynamic_vite_asset(entry)
+    if LuckyEnv.development?
+      LuckyVite.origin_with_path({{entry}})
+    else
+      LuckyVite::AssetHelpers.dynamic_vite_asset({{entry}})
     end
   end
 
