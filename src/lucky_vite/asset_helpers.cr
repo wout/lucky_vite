@@ -11,7 +11,7 @@ module LuckyVite::AssetHelpers
   #
   # Note: Vite generates its manifest inside the assets dir.
   macro load_manifest(manifest_file)
-    {{ run "./asset_manifest_builder", manifest_file }}
+    {{ run "../lucky_vite_runners/asset_manifest_builder", manifest_file }}
     {% CONFIG[:has_loaded_manifest] = true %}
   end
 
@@ -53,7 +53,7 @@ module LuckyVite::AssetHelpers
         {{ LuckyVite::AssetHelpers::ASSET_MANIFEST[path] }}
       {% else %}
         {% asset_paths = LuckyVite::AssetHelpers::ASSET_MANIFEST.keys.join(",") %}
-        {{ run "./missing_asset", path, asset_paths }}
+        {{ run "../lucky_vite_runners/missing_asset", path, asset_paths }}
       {% end %}
     {% elsif path.is_a?(StringInterpolation) %}
       {% raise <<-ERROR
