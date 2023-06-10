@@ -88,7 +88,7 @@ This macro does a bunch of things. In development, it loads `@vite/client` and t
 
 In production, it will load the static versions from the manifest and create individual tags for all of them, including stylesheets. With this macro, the whole frontend is served.
 
-As a second argument, it accepts any attributes you'd want on the generated tags:
+It also accepts any attributes you'd want on all the generated tags:
 
 ```crystal
 vite_entry_tags "main.js", data_turbo_track: "reload"
@@ -102,7 +102,7 @@ vite_js_link "main.js", async: true
 vite_css_link "main.css"
 ```
 
-They do the exact same thing as `vite_entry_tags`. Note that `vite_css_link` will not output anything in development.
+They do the exact same thing as `vite_entry_tags`. Note that `vite_css_link` won't output anything in development.
 
 If you need even more control over the generated tags, you can use the `vite_asset` macro in combination with Lucky's `js_link` and `css_link` methods:
 
@@ -116,7 +116,7 @@ The `vite_asset` macro works exactly the same as Lucky's `asset` macro, so you c
 css_link dynamic_vite_asset("main.css")
 ```
 
-**Note**: Since LuckyVite is now managing the asset pipeline, Lucky's `asset` and `dynamic_asset` macros are no longer working.
+**Note**: Since LuckyVite is now managing the asset pipeline, Lucky's `asset` and `dynamic_asset` macros are no longer necessary.
 
 Finally, if you're using React with the `@vitejs/plugin-react` plugin, you need to add the `vite_react_refresh_tag` method before any other asset tags to inject the refresh runtime served by Vite:
 
