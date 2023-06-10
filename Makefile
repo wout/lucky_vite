@@ -1,4 +1,4 @@
-SHARD_BIN ?= ./bin
+SHARD_BIN ?= ../../bin
 
 shim:
 	mkdir -p $(SHARD_BIN)
