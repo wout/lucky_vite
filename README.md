@@ -112,7 +112,7 @@ One downside is that the attributes will be applied to all generated tags, which
 
 #### A bit of control
 
-If you need different attribtues on style tags then on script tags, you can use the following three methods:
+If you need different attribtues on style tags than on script tags, you can use the following three methods:
 
 ```crystal
 vite_client_tag
