@@ -20,6 +20,8 @@ development_dependencies:
   spec_mirror:
     github: wout/spec_mirror.cr
     branch: master
+  lucky:
+    github: luckyframework/lucky
 
 scripts:
   postinstall: make shim

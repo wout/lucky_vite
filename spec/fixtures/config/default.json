@@ -1,0 +1,13 @@
+{
+  "aliases": {
+    "@css": "src/css",
+    "@js": "src/js",
+    "@images": "src/images",
+    "@fonts": "src/fonts"
+  },
+  "outDir": "public/assets",
+  "entry": "entry",
+  "host": "127.0.0.1",
+  "port": 3010,
+  "root": "src/js"
+}
