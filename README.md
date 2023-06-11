@@ -178,14 +178,25 @@ Lucky and Vite share some information which is managed through the `config/lucky
 
 Here's a bit more info about the available properties:
 
-- **`aliases`** (_`string[]`_): a list of directories for Vite to create aliases for (e.g. `@images` becomes `src/images`; defaults to `['js', 'css', 'images', 'fonts']`)
-- **`outDir`** (_`string`_): the target dir for Vite; this will be cleared on every run
-- **`root`** (_`string`_): the javascript root (typically `src/js`)
-- **`entry`** (_`string`_): this is where Vite looks for entry scripts (e.g. `src/js/entry`)
+- **`aliases`** (_`string[]`_): a list of directories for Vite to create aliases
+  - _default_: `["js", "css", "images", "fonts"]`)
+  - _example_: `@images` becomes `src/images`
+- **`outDir`** (_`string`_): the target dir for Vite
+  - _default_: `"public/assets"`
+  - _note_: this will be cleared on every run
+- **`root`** (_`string`_): the javascript root
+  - _default_: `"src/js"`
+- **`entry`** (_`string`_): this is where Vite looks for entry scripts
+  - _default_: `"entry"`
 - **`https`** (_`boolean`_): uses `https:` for the Vite server if set to `true`
-- **`host`** (_`string | boolean`_): the host name where the Vite server will be listening; if set to `true`, it will listen on `0.0.0.0` (all addresses)
-- **`port`** (_`string | number`_): the port to listen on
-- **`origin`** (_`string`_): use the full uri; alternative to using `https`, `host` and `port`
+  - _default_: `false`
+- **`host`** (_`string | boolean`_): host name for the Vite server
+  - _default_: `"127.0.0.1"`
+  - _note_: if set to `true`, it will listen on `0.0.0.0` (all addresses)
+- **`port`** (_`string | number`_): port for the Vite server
+  - _default_: `3010`
+- **`origin`** (_`string`_): alternative to using `https`, `host` and `port`
+  - _example_: `"http://localhost:3210"`
 
 **Note**: not all Vite's configuration options are recognised here. Please open an issue or a PR if you are missing some. Alternatively, you can also add them directly in `vite.config.js`.
 
