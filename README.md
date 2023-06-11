@@ -178,7 +178,7 @@ Lucky and Vite share some information which is managed through the `config/lucky
 
 Here's a bit more info about the available properties:
 
-- **`aliases`** (_`string[]`_): a list of directories for Vite to create aliases for (e.g. `@images` becomes `src/images`; defaults to ['js', 'css', 'images', 'fonts'])
+- **`aliases`** (_`string[]`_): a list of directories for Vite to create aliases for (e.g. `@images` becomes `src/images`; defaults to `['js', 'css', 'images', 'fonts']`)
 - **`outDir`** (_`string`_): the target dir for Vite; this will be cleared on every run
 - **`root`** (_`string`_): the javascript root (typically `src/js`)
 - **`entry`** (_`string`_): this is where Vite looks for entry scripts (e.g. `src/js/entry`)
