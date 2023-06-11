@@ -44,6 +44,8 @@ Replace the `Lucky::AssetHelpers.load_manifest` line in `src/app.cr` with:
 +LuckyVite::AssetHelpers.load_manifest
 ```
 
+**Note**: The Vite manifest path does not need to be passed here. It's loaded from the configured `outDir` by LuckyVite. Instead, a custom location to the `lucky_vite.json` config can be passed.
+
 ### 3. Register the Vite processes
 
 Update the `Procfile.dev` by removing the `assets` process and adding the two following ones:
