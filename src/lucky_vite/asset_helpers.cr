@@ -96,7 +96,7 @@ module LuckyVite::AssetHelpers
   # NOTE: This method does *not* check assets at compile time. The asset path
   # is found at runtime so it is possible the asset does not exist. Be sure to
   # manually test that the asset is returned as expected.
-  def dynamic_vite_asset(path)
+  def self.dynamic_vite_asset(path)
     entry = LuckyVite::AssetHelpers::ASSET_MANIFEST[path]? ||
             raise "Missing Vite asset: #{path}"
 
