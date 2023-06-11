@@ -26,21 +26,27 @@ dependencies:
 
 There are a few things to set up and change to finalize the installation.
 
-First, run `bin/lucky_vite --init` to create the following files:
+### 1. Generate files
+
+Run `bin/lucky_vite --init` to create the following files:
 
 - `config/lucky_vite.json`: the shared config for Lucky and Vite
 - `vite.config.js`: the Vite config loading `vite-plugin-lucky`
 - `src/js/entry/main.js`: the first entry point with a basic setup
 - `src/css/main.css`: an empty stylesheet which is referenced by `main.js`
 
-Then you'll need to replace the `Lucky::AssetHelpers.load_manifest` line in `src/app.cr` with:
+### 2. Load the Vite manifest
+
+Replace the `Lucky::AssetHelpers.load_manifest` line in `src/app.cr` with:
 
 ```diff
 -Lucky::AssetHelpers.load_manifest "public/mix-manifest.json"
-+LuckyVite::AssetHelpers.load_manifest "public/assets/manifest.json"
++LuckyVite::AssetHelpers.load_manifest
 ```
 
-And update the `Procfile.dev` by removing the `assets` process and adding the two following ones:
+### 3. Register the Vite processes
+
+Update the `Procfile.dev` by removing the `assets` process and adding the two following ones:
 
 ```diff
 system_check: script/system_check && sleep 100000
@@ -50,7 +56,9 @@ web: lucky watch --reload-browser
 +vite_watcher: yarn watch
 ```
 
-Finally, change the scripts section in `package.json` to use vite instead of laravel mix:
+### 4. Register the Vite runners
+
+Change the scripts section in `package.json` to use vite instead of laravel mix:
 
 ```diff
 {
@@ -70,21 +78,27 @@ Finally, change the scripts section in `package.json` to use vite instead of lar
 
 ## Usage
 
-Start by including the shard in your app:
+Start with including the shard in your app first:
 
 ```crystal
 # in src/shards.cr
 require "lucky_vite"
 ```
 
-And adding the vite tags in the head of your page:
+### Tags
+
+This shard provides three levels of control over the individual Vite tags.
+
+#### Hands-off
+
+The `vite_entry_tags` macro method serves all your Vite needs, but it gives you the least amount of control over the individual tags that are generated:
 
 ```crystal
 # src/components/shared/layout_head.cr
 vite_entry_tags "main.js"
 ```
 
-This macro does a bunch of things. In development, it loads `@vite/client` and the given entry script. Vite will dynamically load any stylesheets imported in the entry script.
+It does a bunch of things. In development, it loads `@vite/client` and the given entry script. Vite will dynamically load any stylesheets imported in the entry script.
 
 In production, it will load the static versions from the manifest and create individual tags for all of them, including stylesheets. With this macro, the whole frontend is served.
 
@@ -94,7 +108,11 @@ It also accepts any attributes you'd want on all the generated tags:
 vite_entry_tags "main.js", data_turbo_track: "reload"
 ```
 
-You can get more control over the individual tags by using the following three methods:
+One downside is that the attributes will be applied to all generated tags, which you may not want in some cases.
+
+#### A bit of control
+
+If you need different attribtues on style tags then on script tags, you can use the following three methods:
 
 ```crystal
 vite_client_tag
@@ -102,7 +120,9 @@ vite_js_link "main.js", async: true
 vite_css_link "main.css"
 ```
 
-They do the exact same thing as `vite_entry_tags`. Note that `vite_css_link` won't output anything in development.
+They do the exact same thing as `vite_entry_tags`. Note that `vite_css_link` won't output anything in development as they are dynamically loaded by Vite.
+
+#### Full control
 
 If you need even more control over the generated tags, you can use the `vite_asset` macro in combination with Lucky's `js_link` and `css_link` methods:
 
@@ -118,7 +138,9 @@ css_link dynamic_vite_asset("main.css")
 
 **Note**: Since LuckyVite is now managing the asset pipeline, Lucky's `asset` and `dynamic_asset` macros are no longer necessary.
 
-Finally, if you're using React with the `@vitejs/plugin-react` plugin, you need to add the `vite_react_refresh_tag` method before any other asset tags to inject the refresh runtime served by Vite:
+### Using React
+
+If you're using React with the `@vitejs/plugin-react` plugin, you need to add the `vite_react_refresh_tag` method before any other asset tags to inject the refresh runtime served by Vite:
 
 ```crystal
 vite_react_refresh_tag
@@ -132,12 +154,6 @@ Lucky and Vite share some information which is managed through the `config/lucky
 
 ```json
 {
-  "aliases": {
-    "@css": "src/css",
-    "@js": "src/js",
-    "@images": "src/images",
-    "@fonts": "src/fonts"
-  },
   "outDir": "public/assets",
   "entry": "entry",
   "host": "127.0.0.1",
@@ -155,7 +171,6 @@ Here's a bit more info about the available properties:
 - **`host`** (_`string | boolean`_): the host name where the vite server will be listening; if set to `true`, it will listen on `0.0.0.0` (all addresses)
 - **`port`** (_`string | number`_): the port to listen on
 - **`origin`** (_`string`_): use the full uri; alternative to using `https`, `host` and `port`
-- **`aliases`** (_`object`_): helps to reference files (e.g. `@css/main.css` instead of `../css/main.css`)
 
 **Note**: not all Vite's configuration options are recognised here. Please open an issue or a PR if you are missing some. Alternatively, you can also add them directly in `vite.config.js`.
 
