@@ -178,12 +178,12 @@ Lucky and Vite share some information which is managed through the `config/lucky
 
 Here's a bit more info about the available properties:
 
-- **`aliases`** (_`string[]`_): a liast of directories for vite to create aliases for (e.g. `@images` becomes `src/images`; defaults to ['js', 'css', 'images', 'fonts'])
-- **`outDir`** (_`string`_): the target dir for vite; this will be cleared on every run
+- **`aliases`** (_`string[]`_): a list of directories for Vite to create aliases for (e.g. `@images` becomes `src/images`; defaults to ['js', 'css', 'images', 'fonts'])
+- **`outDir`** (_`string`_): the target dir for Vite; this will be cleared on every run
 - **`root`** (_`string`_): the javascript root (typically `src/js`)
-- **`entry`** (_`string`_): this is where vite looks for entry scripts (e.g. `src/js/entry`)
-- **`https`** (_`boolean`_): uses `https:` for the vite server if set to `true`
-- **`host`** (_`string | boolean`_): the host name where the vite server will be listening; if set to `true`, it will listen on `0.0.0.0` (all addresses)
+- **`entry`** (_`string`_): this is where Vite looks for entry scripts (e.g. `src/js/entry`)
+- **`https`** (_`boolean`_): uses `https:` for the Vite server if set to `true`
+- **`host`** (_`string | boolean`_): the host name where the Vite server will be listening; if set to `true`, it will listen on `0.0.0.0` (all addresses)
 - **`port`** (_`string | number`_): the port to listen on
 - **`origin`** (_`string`_): use the full uri; alternative to using `https`, `host` and `port`
 
