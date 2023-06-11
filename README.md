@@ -80,6 +80,12 @@ Change the scripts section in `package.json` to use vite instead of laravel mix:
 }
 ```
 
+### Further steps
+
+- you may want to exclude Vite's `outDir` (e.g. `public/assets`) from the repo
+- all the `laravel-mix` dependencies can be removed from from `package.json`
+- `webpack.mix.js` can be removed
+
 ## Usage
 
 Start with including the shard in your app first:
