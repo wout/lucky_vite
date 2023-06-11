@@ -116,27 +116,25 @@ If you need different attribtues on style tags than on script tags, you can use 
 
 ```crystal
 vite_client_tag
-vite_js_link "main.js", async: true
+vite_js_link "main.js"
 vite_css_link "main.css"
 ```
 
-They do the exact same thing as `vite_entry_tags`. Note that `vite_css_link` won't output anything in development as they are dynamically loaded by Vite.
+Together they do the exact same thing as `vite_entry_tags`.
+
+**Note**: `vite_css_link` won't output anything in development as stylesheets are dynamically loaded by Vite.
 
 #### Full control
 
 If you need even more control over the generated tags, you can use the `vite_asset` macro in combination with Lucky's `js_link` and `css_link` methods:
 
 ```crystal
-css_link vite_asset("main.css")
+vite_client_tag
+js_link vite_asset("main.js"), type: "module"
+css_link vite_asset("main.css") unless LuckyEnv.development?
 ```
 
-The `vite_asset` macro works exactly the same as Lucky's `asset` macro, so you can use it for images, fonts and other assets you may have. Its `dynamic_asset` counterpart is also available:
-
-```crystal
-css_link dynamic_vite_asset("main.css")
-```
-
-**Note**: Since LuckyVite is now managing the asset pipeline, Lucky's `asset` and `dynamic_asset` macros are no longer necessary.
+The example above does the exact same thing as `vite_entry_tags`.
 
 ### Using React
 
@@ -148,22 +146,39 @@ vite_client_tag
 # ...
 ```
 
+### Static assets
+
+LuckyVite manages the asset pipeline, so Lucky's `asset` and `dynamic_asset` macros are no longer working as expected. Instead, you should use `vite_asset` and `dynamic_vite_asset`.
+
+```crystal
+img src: vite_asset("@images/logo.png")
+```
+
+**Note**: The asset helper uses Vite's aliases for easier referencings. Aliases can be configured in `config/lucky_vite.json`.
+
 ## Configuration
 
 Lucky and Vite share some information which is managed through the `config/lucky_vite.json` file. It comes with the following defaults:
 
 ```json
 {
+  "aliases": [
+    "css",
+    "fonts",
+    "images",
+    "js"
+  ],
   "outDir": "public/assets",
+  "root": "src/js",
   "entry": "entry",
   "host": "127.0.0.1",
-  "port": 3010,
-  "root": "src/js"
+  "port": 3010
 }
 ```
 
 Here's a bit more info about the available properties:
 
+- **`aliases`** (_`string[]`_): a liast of directories for vite to create aliases for (e.g. `@images` becomes `src/images`; defaults to ['js', 'css', 'images', 'fonts'])
 - **`outDir`** (_`string`_): the target dir for vite; this will be cleared on every run
 - **`root`** (_`string`_): the javascript root (typically `src/js`)
 - **`entry`** (_`string`_): this is where vite looks for entry scripts (e.g. `src/js/entry`)
