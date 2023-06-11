@@ -1,14 +1,18 @@
 {
-  "lucky_logo.png": {
-    "file": "images/lucky_logo.a54cc67e.png",
-    "src": "src/images/lucky_logo.png"
+  "../../images/image.jpg": {
+    "file": "images/image.9f16cff4.jpg",
+    "src": "../../images/image.jpg"
   },
-  "app.js": {
+  "main.css": {
+    "file": "css/main.75de05d8.css",
+    "src": "main.css"
+  },
+  "main.js": {
     "css": [
       "css/main.75de05d8.css"
     ],
-    "file": "src/js/app.2d2335c4.js",
+    "file": "js/main.2d2335c4.js",
     "isEntry": true,
-    "src": "app.js"
+    "src": "main.js"
   }
 }

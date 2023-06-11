@@ -7,20 +7,30 @@ describe LuckyVite::AssetHelpers do
 
   describe ".vite_asset" do
     it "returns the fingerprinted path" do
-      LuckyVite::AssetHelpers.vite_asset("lucky_logo.png")
-        .should eq "/images/lucky_logo.a54cc67e.png"
+      LuckyVite::AssetHelpers.vite_asset("main.js")
+        .should eq "/assets/js/main.2d2335c4.js"
+      LuckyVite::AssetHelpers.vite_asset("main.css")
+        .should eq "/assets/css/main.75de05d8.css"
+      LuckyVite::AssetHelpers.vite_asset("@images/image.jpg")
+        .should eq "/assets/images/image.9f16cff4.jpg"
     end
   end
 
   describe ".dynamic_vite_asset" do
     it "returns the fingerprinted path" do
-      LuckyVite::AssetHelpers.dynamic_vite_asset("lucky_logo.png")
-        .should eq "/images/lucky_logo.a54cc67e.png"
+      LuckyVite::AssetHelpers.dynamic_vite_asset("main.js")
+        .should eq "/assets/js/main.2d2335c4.js"
+      LuckyVite::AssetHelpers.dynamic_vite_asset("main.css")
+        .should eq "/assets/css/main.75de05d8.css"
+      LuckyVite::AssetHelpers.dynamic_vite_asset("@images/image.jpg")
+        .should eq "/assets/images/image.9f16cff4.jpg"
     end
 
     it "raises with a when a file is not in the manifest" do
-      expect_raises(Exception, "Missing Vite asset: missing.png") do
-        LuckyVite::AssetHelpers.dynamic_vite_asset("missing.png")
+      expect_raises(
+        Exception, "Asset missing from Vite manifest: @images/missing.png"
+      ) do
+        LuckyVite::AssetHelpers.dynamic_vite_asset("@images/missing.png")
       end
     end
   end
