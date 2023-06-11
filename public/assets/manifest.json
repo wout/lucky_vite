@@ -1,0 +1,14 @@
+{
+  "lucky_logo.png": {
+    "file": "images/lucky_logo.a54cc67e.png",
+    "src": "src/images/lucky_logo.png"
+  },
+  "app.js": {
+    "css": [
+      "css/main.75de05d8.css"
+    ],
+    "file": "src/js/app.2d2335c4.js",
+    "isEntry": true,
+    "src": "app.js"
+  }
+}
