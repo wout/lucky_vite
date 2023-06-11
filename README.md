@@ -22,7 +22,7 @@ dependencies:
 
 3. Run `yarn add -D vite vite-plugin-lucky` to install Vite and the plugin for Lucky
 
-**Note**: Loot at [vite-plugin-lucky](https://github.com/wout/vite-plugin-lucky) for more info about the plugin.
+**Note**: Look at [vite-plugin-lucky](https://github.com/wout/vite-plugin-lucky) for more info about the plugin.
 
 ## Setup
 
