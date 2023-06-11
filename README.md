@@ -157,7 +157,7 @@ Here's a bit more info about the available properties:
 - **`origin`** (_`string`_): use the full uri; alternative to using `https`, `host` and `port`
 - **`aliases`** (_`object`_): helps to reference files (e.g. `@css/main.css` instead of `../css/main.css`)
 
-**Note**: not all Vite's configuration options are recognised here. Please open an issue or a PR if you are missing some. Alternatively, you can also add them in `vite.config.js`.
+**Note**: not all Vite's configuration options are recognised here. Please open an issue or a PR if you are missing some. Alternatively, you can also add them directly in `vite.config.js`.
 
 ## Development
 
