@@ -2,24 +2,26 @@ name: Deploy docs
 
 on:
   push:
-    branches: [ main ]
+    branches: [master]
+
+permissions:
+  contents: write
 
 jobs:
   deploy:
+    concurrency:
+      group: ${{ github.ref }}
+      cancel-in-progress: true
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-        with:
-          persist-credentials: false
+      - uses: actions/checkout@v3
+
       - uses: crystal-lang/install-crystal@v1
-        with:
-          crystal: latest
-      - name: "Install shards"
-        run: shards install
-      - name: "Generate docs"
+
+      - name: Generate docs
         run: crystal docs
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
+
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./docs
+          folder: docs
