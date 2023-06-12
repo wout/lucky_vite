@@ -2,10 +2,10 @@ module LuckyVite::Tags
   SERVED_BY_VITE = %w[js jsx ts tsx css scss less]
 
   # Renders the Vite client to enable Hot Module Reload in development.
-  def vite_client_tag
+  def vite_client_tag(**options)
     return unless LuckyEnv.development?
 
-    js_link(LuckyVite.origin_with_path("@vite/client"), type: "module")
+    js_link(LuckyVite.origin_with_path("@vite/client"), **options, type: "module")
   end
 
   # A one-stop shop for all your vite tags in development and production.
@@ -16,7 +16,7 @@ module LuckyVite::Tags
   # environments it loads compiled files from the manifest.
   macro vite_entry_tags(entry, **options)
     if LuckyEnv.development?
-      vite_client_tag
+      vite_client_tag({{**options}})
       vite_js_link {{entry}}{% unless options.empty? %}, {{**options}}{% end %}
     else
       asset = LuckyVite::AssetHelpers.manifest_entry({{entry}})
@@ -34,8 +34,7 @@ module LuckyVite::Tags
   #
   # Additional tag attributes can be passed in as named arguments.
   macro vite_js_link(entry, **options)
-    js_link asset({{entry}}),
-      type: "module"{% unless options.empty? %}, {{**options}}{% end %}
+    js_link asset({{entry}}), type: "module"{% unless options.empty? %}, {{**options}}{% end %}
   end
 
   # Generates a stylesheet link tag for the given entrypoint.
@@ -43,7 +42,7 @@ module LuckyVite::Tags
   # Additional tag attributes can be passed in as named arguments.
   macro vite_css_link(entry, **options)
     unless LuckyEnv.development?
-      css_link LuckyVite::AssetHelpers.asset({{entry}}), {% unless options.empty? %}, {{**options}}{% end %}
+      css_link LuckyVite::AssetHelpers.asset({{entry}}){% unless options.empty? %}, {{**options}}{% end %}
     end
   end
 
@@ -79,10 +78,10 @@ module LuckyVite::Tags
   # ```
   #
   # Only use this tag with `@vitejs/plugin-react`.
-  def vite_react_refresh_tag
+  def vite_react_refresh_tag(**options)
     return unless LuckyEnv.development?
 
-    script type: "module" do
+    script **options, type: "module" do
       raw <<-REACT
         import RefreshRuntime from '#{LuckyVite.origin_with_path("@react-refresh")}'
         RefreshRuntime.injectIntoGlobalHook(window)

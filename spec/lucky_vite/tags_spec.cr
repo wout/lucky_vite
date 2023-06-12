@@ -7,8 +7,10 @@ describe LuckyVite::Config do
 
   describe "#vite_client_tag" do
     it "renders the vite client tag in development" do
-      LuckyViteClientTagTestPage.new(context).render.to_s
-        .should eq the_vite_client_tag
+      contents = LuckyViteClientTagTestPage.new(context).render.to_s
+
+      contents.should contain(%(<script src="http://127.0.0.1:3010/@vite/client" type="module">))
+      contents.should contain(%(<script src="http://127.0.0.1:3010/@vite/client" data-client="tag" type="module"></script>))
     end
 
     it "renders nothing in production" do
@@ -21,17 +23,58 @@ describe LuckyVite::Config do
     it "renders the entry script loaded from the vite server in development" do
       contents = LuckyViteEntryTagsPage.new(context).render.to_s
 
-      contents.should contain the_vite_client_tag
-      contents.should contain the_vite_entry_tag("main.js")
+      contents.should contain %(<script src="http://127.0.0.1:3010/@vite/client" data-entry="tags" type="module"></script>)
+      contents.should contain %(<script src="http://127.0.0.1:3010/main.js" type="module" data-entry="tags"></script>)
     end
 
     it "renders the entry script an styles from the manifest in production" do
       ENV["LUCKY_ENV"] = "production"
       contents = LuckyViteEntryTagsPage.new(context).render.to_s
 
-      contents.should_not contain the_vite_client_tag
-      contents.should contain the_script_tag("main.2d2335c4.js")
-      contents.should contain the_style_tag("main.75de05d8.css")
+      contents.should_not contain "@vite/client"
+      contents.should contain %(<script src="/assets/js/main.2d2335c4.js" type="module" data-entry="tags"></script>)
+      contents.should contain %(<link href="/assets/css/main.75de05d8.css" rel="stylesheet" media="screen" data-entry="tags">)
+    end
+  end
+
+  describe "#vite_js_link" do
+    it "renders a script loaded from the vite server in development" do
+      contents = LuckyViteJsLinkPage.new(context).render.to_s
+
+      contents.should contain %(<script src="http://127.0.0.1:3010/main.js" type="module" data-js="link"></script>)
+    end
+
+    it "renders a script loaded from the manifest in production" do
+      ENV["LUCKY_ENV"] = "production"
+      contents = LuckyViteJsLinkPage.new(context).render.to_s
+
+      contents.should contain %(<script src="/assets/js/main.2d2335c4.js" type="module" data-js="link"></script>)
+    end
+  end
+
+  describe "#vite_css_link" do
+    it "renders nothing in development" do
+      LuckyViteCssLinkPage.new(context).render.to_s.should eq ""
+    end
+
+    it "renders a style loaded from the manifest in production" do
+      ENV["LUCKY_ENV"] = "production"
+      contents = LuckyViteCssLinkPage.new(context).render.to_s
+
+      contents.should contain %(<link href="/assets/css/main.75de05d8.css" rel="stylesheet" media="screen" data-css="link">)
+    end
+  end
+
+  describe "#vite_react_refresh_tag" do
+    it "renders a react refresh tag in development" do
+      contents = LuckyViteReactRefreshTagTestPage.new(context).render.to_s
+
+      contents.should contain %(<script type="module">  import RefreshRuntime from 'http://127.0.0.1:3010/@react-refresh')
+    end
+
+    it "renders nothing in production" do
+      ENV["LUCKY_ENV"] = "production"
+      LuckyViteReactRefreshTagTestPage.new(context).render.to_s.should eq("")
     end
   end
 end
@@ -41,6 +84,7 @@ class LuckyViteClientTagTestPage
 
   def render
     vite_client_tag
+    vite_client_tag data_client: "tag"
     view
   end
 end
@@ -49,7 +93,35 @@ class LuckyViteEntryTagsPage
   include Lucky::HTMLPage
 
   def render
-    vite_entry_tags "main.js"
+    vite_entry_tags "main.js", data_entry: "tags"
+    view
+  end
+end
+
+class LuckyViteJsLinkPage
+  include Lucky::HTMLPage
+
+  def render
+    vite_js_link "main.js", data_js: "link"
+    view
+  end
+end
+
+class LuckyViteCssLinkPage
+  include Lucky::HTMLPage
+
+  def render
+    vite_css_link "main.css", data_css: "link"
+    view
+  end
+end
+
+class LuckyViteReactRefreshTagTestPage
+  include Lucky::HTMLPage
+
+  def render
+    vite_react_refresh_tag
+    vite_react_refresh_tag data_react: "refresh-tag"
     view
   end
 end
@@ -59,20 +131,4 @@ private def context : HTTP::Server::Context
   request = HTTP::Request.new("GET", "/")
   response = HTTP::Server::Response.new(io)
   HTTP::Server::Context.new request, response
-end
-
-private def the_vite_client_tag
-  %(<script src="http://127.0.0.1:3010/@vite/client" type="module"></script>)
-end
-
-private def the_vite_entry_tag(name)
-  %(<script src="http://127.0.0.1:3010/#{name}" type="module"></script>)
-end
-
-private def the_script_tag(name)
-  %(<script src="/assets/js/#{name}" type="module"></script>)
-end
-
-private def the_style_tag(name)
-  %(<link href="/assets/css/#{name}" rel="stylesheet" media="screen">)
 end
