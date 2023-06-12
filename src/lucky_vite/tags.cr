@@ -1,4 +1,6 @@
 module LuckyVite::Tags
+  SERVED_BY_VITE = %w[js jsx ts tsx css scss less]
+
   # Renders the Vite client to enable Hot Module Reload in development.
   def vite_client_tag
     return unless LuckyEnv.development?
@@ -48,20 +50,23 @@ module LuckyVite::Tags
   # Loads an asset from the vite server in development or as a static file in
   # production.
   macro asset(entry)
-    if LuckyEnv.development?
-      LuckyVite.origin_with_path({{entry}})
-    else
-      LuckyVite::AssetHelpers.asset({{entry}})
-    end
+    asset_for_current_environment({{entry}}, {{asset}})
   end
 
   # Loads an asset, without checking it's existance in the manifest, from the
   # vite server in development or as a static file in production.
   macro dynamic_asset(entry)
-    if LuckyEnv.development?
-      LuckyVite.origin_with_path({{entry}})
+    asset_for_current_environment({{entry}}, {{dynamic_asset}})
+  end
+
+  # :nodoc:
+  macro asset_for_current_environment(entry, method)
+    {% style_or_script = entry.split(".").last.includes?(SERVED_BY_VITE) %}
+
+    if LuckyEnv.development? && {{style_or_script}}
+      LuckyVite.origin_with_path({{entry.gsub(/^(@js|@css)\//)}})
     else
-      LuckyVite::AssetHelpers.dynamic_asset({{entry}})
+      LuckyVite::AssetHelpers.{{method}}({{entry}})
     end
   end
 
