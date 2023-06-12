@@ -61,7 +61,7 @@ module LuckyVite::Tags
 
   # :nodoc:
   macro asset_for_current_environment(entry, method)
-    {% style_or_script = SERVED_BY_VITE.last.includes?(entry.split(".")) %}
+    {% style_or_script = SERVED_BY_VITE.includes?(entry.split(".").last) %}
 
     if LuckyEnv.development? && {{style_or_script}}
       LuckyVite.origin_with_path({{entry.gsub(/^(@js|@css)\//)}})
