@@ -242,7 +242,7 @@ vite_css_link <span class="s">&quot;main.css&quot;</span></code></pre>
     <use href="#octicon-link"/>
   </svg>
 </a>Full control</h4>
-<p>If you need even more control over the generated tags, you can use the <code>vite_asset</code> macro in combination with Lucky's <code>js_link</code> and <code>css_link</code> methods:</p>
+<p>If you need even more control over the generated tags, you can use the <code>asset</code> macro in combination with Lucky's <code>js_link</code> and <code>css_link</code> methods:</p>
 <pre><code class="language-crystal">vite_client_tag
 js_link vite_asset(<span class="s">&quot;main.js&quot;</span>), <span class="k">type</span>: <span class="s">&quot;module&quot;</span>
 css_link vite_asset(<span class="s">&quot;main.css&quot;</span>) <span class="k">unless</span> <span class="t">LuckyEnv</span>.development?</code></pre>
@@ -261,8 +261,8 @@ vite_client_tag
     <use href="#octicon-link"/>
   </svg>
 </a>Static assets</h3>
-<p>LuckyVite manages the asset pipeline, so Lucky's <code>asset</code> and <code>dynamic_asset</code> macros are no longer working as expected. Instead, you should use <code>vite_asset</code> and <code>dynamic_vite_asset</code>.</p>
-<pre><code class="language-crystal">img src: vite_asset(<span class="s">&quot;@images/logo.png&quot;</span>)</code></pre>
+<p>LuckyVite manages the asset pipeline by overwriting Lucky's <code>asset</code> and <code>dynamic_asset</code> macros.</p>
+<pre><code class="language-crystal">img src: asset(<span class="s">&quot;@images/logo.png&quot;</span>)</code></pre>
 <p><strong>Note</strong>: The asset helper uses Vite's aliases for easier referencings. Aliases can be configured in <code>config/lucky_vite.json</code>.</p>
 <h2><a id="configuration" class="anchor" href="#configuration">
   <svg class="octicon-link" aria-hidden="true">
