@@ -17,7 +17,7 @@ module LuckyVite::Tags
       vite_client_tag
       vite_js_link {{entry}}{% unless options.empty? %}, {{**options}}{% end %}
     else
-      asset = LuckyVite::AssetHelpers.vite_manifest_entry({{entry}})
+      asset = LuckyVite::AssetHelpers.manifest_entry({{entry}})
       js_link asset[:file], type: "module"{% unless options.empty? %}, {{**options}}{% end %}
 
       if styles = asset[:css]?
