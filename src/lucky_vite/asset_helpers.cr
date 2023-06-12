@@ -21,10 +21,10 @@ module LuckyVite::AssetHelpers
   # ```
   # # In a page or component:
   # # Will find the asset in `public/assets/images/logo.a1b2c3d4.png`
-  # img src: vite_asset("images/logo.png")
+  # img src: asset("images/logo.png")
   #
   # # Can also be used elsewhere by prepending LuckyVite::AssetHelpers
-  # LuckyVite::AssetHelpers.vite_asset("images/logo.png")
+  # LuckyVite::AssetHelpers.asset("images/logo.png")
   # ```
   #
   # Note that assets are checked at compile time so if it is not found, Lucky
@@ -32,9 +32,9 @@ module LuckyVite::AssetHelpers
   # an asset that is close to what you typed.
   #
   # NOTE: This macro requires a `StringLiteral`. That means you cannot
-  # interpolate strings like this: `vite_asset("images/icon-#{modifier}.png")`.
-  # instead use `dynamic_vite_asset` if you need string interpolation.
-  macro vite_asset(path)
+  # interpolate strings like this: `asset("images/icon-#{modifier}.png")`.
+  # instead use `dynamic_asset` if you need string interpolation.
+  macro asset(path)
     File.join(
       Lucky::Server.settings.asset_host,
       LuckyVite::AssetHelpers.vite_manifest_entry({{path}})[:file]
@@ -59,23 +59,23 @@ module LuckyVite::AssetHelpers
     {% elsif path.is_a?(StringInterpolation) %}
       {% raise <<-ERROR
       \n
-      The 'vite_asset' macro doesn't work with string interpolation
+      The 'asset' macro doesn't work with string interpolation
 
       Try this...
 
-        ▸ Use the 'dynamic_vite_asset' method instead
+        ▸ Use the 'dynamic_asset' method instead
 
       ERROR
       %}
     {% else %}
       {% raise <<-ERROR
       \n
-      The 'vite_asset' macro requires a literal string like "app.ts", instead got: #{path}
+      The 'asset' macro requires a literal string like "app.ts", instead got: #{path}
 
       Try this...
 
         ▸ If you're using a variable, switch to a literal string
-        ▸ If you can't use a literal string, use the 'dynamic_vite_asset' method instead
+        ▸ If you can't use a literal string, use the 'dynamic_asset' method instead
 
       ERROR
       %}
@@ -87,16 +87,16 @@ module LuckyVite::AssetHelpers
   # ```
   # # In a page or component
   # # Will find the asset in `public/assets/images/logo.a1b2c3d4.png`
-  # img src: dynamic_vite_asset("images/logo.png")
+  # img src: dynamic_asset("images/logo.png")
   #
   # # Can also be used elsewhere by prepending LuckyVite::AssetHelpers
-  # LuckyVite::AssetHelpers.dynamic_vite_asset("images/logo.png")
+  # LuckyVite::AssetHelpers.dynamic_asset("images/logo.png")
   # ```
   #
   # NOTE: This method does *not* check assets at compile time. The asset path
   # is found at runtime so it is possible the asset does not exist. Be sure to
   # manually test that the asset is returned as expected.
-  def self.dynamic_vite_asset(path : String) : String
+  def self.dynamic_asset(path : String) : String
     entry = LuckyVite::AssetHelpers::ASSET_MANIFEST[path]? ||
             raise "Asset missing from Vite manifest: #{path}"
 

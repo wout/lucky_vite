@@ -5,24 +5,24 @@ describe LuckyVite::AssetHelpers do
     LuckyVite::AssetHelpers.load_manifest("./public/assets/manifest.json")
   end
 
-  describe ".vite_asset" do
+  describe ".asset" do
     it "returns the fingerprinted path" do
-      LuckyVite::AssetHelpers.vite_asset("main.js")
+      LuckyVite::AssetHelpers.asset("main.js")
         .should eq "/assets/js/main.2d2335c4.js"
-      LuckyVite::AssetHelpers.vite_asset("main.css")
+      LuckyVite::AssetHelpers.asset("main.css")
         .should eq "/assets/css/main.75de05d8.css"
-      LuckyVite::AssetHelpers.vite_asset("@images/image.jpg")
+      LuckyVite::AssetHelpers.asset("@images/image.jpg")
         .should eq "/assets/images/image.9f16cff4.jpg"
     end
   end
 
-  describe ".dynamic_vite_asset" do
+  describe ".dynamic_asset" do
     it "returns the fingerprinted path" do
-      LuckyVite::AssetHelpers.dynamic_vite_asset("main.js")
+      LuckyVite::AssetHelpers.dynamic_asset("main.js")
         .should eq "/assets/js/main.2d2335c4.js"
-      LuckyVite::AssetHelpers.dynamic_vite_asset("main.css")
+      LuckyVite::AssetHelpers.dynamic_asset("main.css")
         .should eq "/assets/css/main.75de05d8.css"
-      LuckyVite::AssetHelpers.dynamic_vite_asset("@images/image.jpg")
+      LuckyVite::AssetHelpers.dynamic_asset("@images/image.jpg")
         .should eq "/assets/images/image.9f16cff4.jpg"
     end
 
@@ -30,7 +30,7 @@ describe LuckyVite::AssetHelpers do
       expect_raises(
         Exception, "Asset missing from Vite manifest: @images/missing.png"
       ) do
-        LuckyVite::AssetHelpers.dynamic_vite_asset("@images/missing.png")
+        LuckyVite::AssetHelpers.dynamic_asset("@images/missing.png")
       end
     end
   end

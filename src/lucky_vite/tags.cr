@@ -32,7 +32,8 @@ module LuckyVite::Tags
   #
   # Additional tag attributes can be passed in as named arguments.
   macro vite_js_link(entry, **options)
-    js_link vite_asset({{entry}}), type: "module"{% unless options.empty? %}, {{**options}}{% end %}
+    js_link asset({{entry}}),
+      type: "module"{% unless options.empty? %}, {{**options}}{% end %}
   end
 
   # Generates a stylesheet link tag for the given entrypoint.
@@ -40,27 +41,27 @@ module LuckyVite::Tags
   # Additional tag attributes can be passed in as named arguments.
   macro vite_css_link(entry, **options)
     unless LuckyEnv.development?
-      css_link LuckyVite::AssetHelpers.vite_asset({{entry}}), {% unless options.empty? %}, {{**options}}{% end %}
+      css_link LuckyVite::AssetHelpers.asset({{entry}}), {% unless options.empty? %}, {{**options}}{% end %}
     end
   end
 
   # Loads an asset from the vite server in development or as a static file in
   # production.
-  macro vite_asset(entry)
+  macro asset(entry)
     if LuckyEnv.development?
       LuckyVite.origin_with_path({{entry}})
     else
-      LuckyVite::AssetHelpers.vite_asset({{entry}})
+      LuckyVite::AssetHelpers.asset({{entry}})
     end
   end
 
   # Loads an asset, without checking it's existance in the manifest, from the
   # vite server in development or as a static file in production.
-  macro dynamic_vite_asset(entry)
+  macro dynamic_asset(entry)
     if LuckyEnv.development?
       LuckyVite.origin_with_path({{entry}})
     else
-      LuckyVite::AssetHelpers.dynamic_vite_asset({{entry}})
+      LuckyVite::AssetHelpers.dynamic_asset({{entry}})
     end
   end
 
