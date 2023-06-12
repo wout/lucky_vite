@@ -50,13 +50,13 @@ module LuckyVite::Tags
   # Loads an asset from the vite server in development or as a static file in
   # production.
   macro asset(entry)
-    asset_for_current_environment({{entry}}, {{asset}})
+    asset_for_current_environment({{entry}}, asset)
   end
 
   # Loads an asset, without checking it's existance in the manifest, from the
   # vite server in development or as a static file in production.
   macro dynamic_asset(entry)
-    asset_for_current_environment({{entry}}, {{dynamic_asset}})
+    asset_for_current_environment({{entry}}, dynamic_asset)
   end
 
   # :nodoc:
