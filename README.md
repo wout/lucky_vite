@@ -8,6 +8,10 @@
 
 A Crystal shard to seamlessly integrate [Vite](https://vitejs.dev/) with [Lucky Framework](https://luckyframework.org/).
 
+![GitHub](https://img.shields.io/github/license/wout/lucky_vite)
+![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/wout/lucky_vite)
+![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/wout/lucky_vite/ci.yml?branch=main)
+
 ## Installation
 
 1. Add the dependency to your `shard.yml`:
@@ -209,6 +213,10 @@ Here's a bit more info about the available properties:
   - _example_: `"http://localhost:3210"`
 
 **Note**: not all Vite's configuration options are recognised here. Please open an issue or a PR if you are missing some. Alternatively, you can also add them directly in `vite.config.js`.
+
+## Documentation
+
+- [API (main)](https://wout.github.io/lucky_vite/)
 
 ## Development
 
