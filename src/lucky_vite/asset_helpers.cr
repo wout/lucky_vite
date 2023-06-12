@@ -37,14 +37,14 @@ module LuckyVite::AssetHelpers
   macro asset(path)
     File.join(
       Lucky::Server.settings.asset_host,
-      LuckyVite::AssetHelpers.vite_manifest_entry({{path}})[:file]
+      LuckyVite::AssetHelpers.manifest_entry({{path}})[:file]
     )
   end
 
   # Safely gets an entry from the Vite manifest and raises a compile time
   # error. It will also let you know if you had a typo and suggest an asset
   # that is close to what you typed.
-  macro vite_manifest_entry(path)
+  macro manifest_entry(path)
     {% unless CONFIG[:has_loaded_manifest] %}
       {% raise "No manifest loaded. Call 'LuckyVite::AssetHelpers.load_manifest'" %}
     {% end %}
