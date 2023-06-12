@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Crystal Docs 1.7.3">
+<meta name="crystal_docs.project_version" content="main">
+<meta name="crystal_docs.project_name" content="lucky_vite">
+
+
+
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/doc.js"></script>
+
+  <meta name="repository-name" content="lucky_vite">
+  <title>lucky_vite main</title>
+  <script type="text/javascript">
+  CrystalDocs.base_path = "";
+  </script>
+</head>
+<body>
+
+<svg class="hidden">
+  <symbol id="octicon-link" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+  </symbol>
+</svg>
+<div class="sidebar">
+  <div class="sidebar-header">
+    <div class="search-box">
+      <input type="search" class="search-input" placeholder="Search..." spellcheck="false" aria-label="Search">
+    </div>
+
+    <div class="project-summary">
+      <h1 class="project-name">
+        <a href="index.html">
+          lucky_vite
+        </a>
+      </h1>
+
+      <span class="project-version">
+        main
+      </span>
+    </div>
+  </div>
+
+  <div class="search-results hidden">
+    <ul class="search-list"></ul>
+  </div>
+
+  <div class="types-list">
+    <ul>
+  
+  <li class="parent " data-id="lucky_vite/Lucky" data-name="lucky">
+      <a href="Lucky.html">Lucky</a>
+      
+        <ul>
+  
+  <li class=" " data-id="lucky_vite/Lucky/BaseComponent" data-name="lucky::basecomponent">
+      <a href="Lucky/BaseComponent.html">BaseComponent</a>
+      
+    </li>
+  
+  <li class=" " data-id="lucky_vite/Lucky/HTMLPage" data-name="lucky::htmlpage">
+      <a href="Lucky/HTMLPage.html">HTMLPage</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class="parent " data-id="lucky_vite/LuckyVite" data-name="luckyvite">
+      <a href="LuckyVite.html">LuckyVite</a>
+      
+        <ul>
+  
+  <li class=" " data-id="lucky_vite/LuckyVite/AssetHelpers" data-name="luckyvite::assethelpers">
+      <a href="LuckyVite/AssetHelpers.html">AssetHelpers</a>
+      
+    </li>
+  
+  <li class=" " data-id="lucky_vite/LuckyVite/Config" data-name="luckyvite::config">
+      <a href="LuckyVite/Config.html">Config</a>
+      
+    </li>
+  
+  <li class=" " data-id="lucky_vite/LuckyVite/Tags" data-name="luckyvite::tags">
+      <a href="LuckyVite/Tags.html">Tags</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+  </div>
+</div>
+
+
+<div class="main-content">
+<h1 align="center">
+  <img src="https://raw.githubusercontent.com/wout/lucky_vite/main/logo.svg" width="200px"/>
+  <br>
+<p>Lucky Vite</p>
+</h1>
+<p>A Crystal shard to seamlessly integrate <a href="https://vitejs.dev/">Vite</a> with <a href="https://luckyframework.org/">Lucky Framework</a>.</p>
+<h2><a id="installation" class="anchor" href="#installation">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Installation</h2>
+<ol>
+<li>Add the dependency to your <code>shard.yml</code>:</li>
+</ol>
+<pre><code class="language-yaml">dependencies:
+  lucky_vite:
+    github: wout/lucky_vite</code></pre>
+<ol start="2">
+<li>
+<p>Run <code>shards install</code></p>
+</li>
+<li>
+<p>Run <code>yarn add -D vite vite-plugin-lucky</code> to install Vite and the plugin for Lucky</p>
+</li>
+</ol>
+<p><strong>Note</strong>: Look at <a href="https://github.com/wout/vite-plugin-lucky">vite-plugin-lucky</a> for more info about the plugin.</p>
+<h2><a id="setup" class="anchor" href="#setup">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Setup</h2>
+<p>There are a few things to set up and change to finalize the installation.</p>
+<h3><a id="1.-generate-files" class="anchor" href="#1.-generate-files">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>1. Generate files</h3>
+<p>Run <code>bin/lucky_vite --init</code> to create the following files:</p>
+<ul>
+<li><code>config/lucky_vite.json</code>: the shared config for Lucky and Vite</li>
+<li><code>vite.config.js</code>: the Vite config loading <code>vite-plugin-lucky</code></li>
+<li><code>src/js/entry/main.js</code>: the first entry point with a basic setup</li>
+<li><code>src/css/main.css</code>: an empty stylesheet which is referenced by <code>main.js</code></li>
+</ul>
+<h3><a id="2.-load-the-vite-manifest" class="anchor" href="#2.-load-the-vite-manifest">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>2. Load the Vite manifest</h3>
+<p>Replace the <code>Lucky::AssetHelpers.load_manifest</code> line in <code>src/app.cr</code> with:</p>
+<pre><code class="language-diff">-Lucky::AssetHelpers.load_manifest &quot;public/mix-manifest.json&quot;
++LuckyVite::AssetHelpers.load_manifest</code></pre>
+<p><strong>Note</strong>: The Vite manifest path does not need to be passed here. It's loaded from the configured <code>outDir</code> by LuckyVite. Instead, a custom location to the <code>lucky_vite.json</code> config can be passed.</p>
+<h3><a id="3.-register-the-vite-processes" class="anchor" href="#3.-register-the-vite-processes">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>3. Register the Vite processes</h3>
+<p>Update the <code>Procfile.dev</code> by removing the <code>assets</code> process and adding the two following ones:</p>
+<pre><code class="language-diff">system_check: script/system_check &amp;&amp; sleep 100000
+web: lucky watch --reload-browser
+-assets: yarn watch
++vite_server: yarn vite
++vite_watcher: yarn watch</code></pre>
+<h3><a id="4.-register-the-vite-runners" class="anchor" href="#4.-register-the-vite-runners">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>4. Register the Vite runners</h3>
+<p>Change the scripts section in <code>package.json</code> to use vite instead of laravel mix:</p>
+<pre><code class="language-diff">{
+  // ...
+  &quot;scripts&quot;: {
+-    &quot;heroku-postbuild&quot;: &quot;yarn prod&quot;,
+-    &quot;dev&quot;: &quot;yarn run mix&quot;,
+-    &quot;watch&quot;: &quot;yarn run mix watch&quot;,
+-    &quot;prod&quot;: &quot;yarn run mix --production&quot;,
++    &quot;heroku-postbuild&quot;: &quot;yarn build&quot;,
++    &quot;build&quot;: &quot;yarn run vite build&quot;,
++    &quot;watch&quot;: &quot;yarn run vite build --watch&quot;
+  },
+  // ...
+}</code></pre>
+<h3><a id="further-steps" class="anchor" href="#further-steps">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Further steps</h3>
+<ul>
+<li>you may want to exclude Vite's <code>outDir</code> (e.g. <code>public/assets</code>) from the repo</li>
+<li>all the <code>laravel-mix</code> dependencies can be removed from from <code>package.json</code></li>
+<li><code>webpack.mix.js</code> can be removed</li>
+</ul>
+<h2><a id="usage" class="anchor" href="#usage">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Usage</h2>
+<p>Start with including the shard in your app first:</p>
+<pre><code class="language-crystal"><span class="c"># in src/shards.cr</span>
+<span class="k">require</span> <span class="s">&quot;lucky_vite&quot;</span></code></pre>
+<h3><a id="tags" class="anchor" href="#tags">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Tags</h3>
+<p>This shard provides three levels of control over the individual Vite tags.</p>
+<h4><a id="hands-off" class="anchor" href="#hands-off">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Hands-off</h4>
+<p>The <code>vite_entry_tags</code> macro method serves all your Vite needs, but it gives you the least amount of control over the individual tags that are generated:</p>
+<pre><code class="language-crystal"><span class="c"># src/components/shared/layout_head.cr</span>
+vite_entry_tags <span class="s">&quot;main.js&quot;</span></code></pre>
+<p>It does a bunch of things. In development, it loads <code>@vite/client</code> and the given entry script. Vite will dynamically load any stylesheets imported in the entry script.</p>
+<p>In production, it will load the static versions from the manifest and create individual tags for all of them, including stylesheets. With this macro, the whole frontend is served.</p>
+<p>It also accepts any attributes you'd want on all the generated tags:</p>
+<pre><code class="language-crystal">vite_entry_tags <span class="s">&quot;main.js&quot;</span>, data_turbo_track: <span class="s">&quot;reload&quot;</span></code></pre>
+<p>One downside is that the attributes will be applied to all generated tags, which you may not want in some cases.</p>
+<h4><a id="a-bit-of-control" class="anchor" href="#a-bit-of-control">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>A bit of control</h4>
+<p>If you need different attribtues on style tags than on script tags, you can use the following three methods:</p>
+<pre><code class="language-crystal">vite_client_tag
+vite_js_link <span class="s">&quot;main.js&quot;</span>
+vite_css_link <span class="s">&quot;main.css&quot;</span></code></pre>
+<p>Together they do the exact same thing as <code>vite_entry_tags</code>.</p>
+<p><strong>Note</strong>: <code>vite_css_link</code> won't output anything in development as stylesheets are dynamically loaded by Vite.</p>
+<h4><a id="full-control" class="anchor" href="#full-control">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Full control</h4>
+<p>If you need even more control over the generated tags, you can use the <code>vite_asset</code> macro in combination with Lucky's <code>js_link</code> and <code>css_link</code> methods:</p>
+<pre><code class="language-crystal">vite_client_tag
+js_link vite_asset(<span class="s">&quot;main.js&quot;</span>), <span class="k">type</span>: <span class="s">&quot;module&quot;</span>
+css_link vite_asset(<span class="s">&quot;main.css&quot;</span>) <span class="k">unless</span> <span class="t">LuckyEnv</span>.development?</code></pre>
+<p>The example above does the exact same thing as <code>vite_entry_tags</code>.</p>
+<h3><a id="using-react" class="anchor" href="#using-react">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Using React</h3>
+<p>If you're using React with the <code>@vitejs/plugin-react</code> plugin, you need to add the <code>vite_react_refresh_tag</code> method before any other asset tags to inject the refresh runtime served by Vite:</p>
+<pre><code class="language-crystal">vite_react_refresh_tag
+vite_client_tag
+<span class="c"># ...</span></code></pre>
+<h3><a id="static-assets" class="anchor" href="#static-assets">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Static assets</h3>
+<p>LuckyVite manages the asset pipeline, so Lucky's <code>asset</code> and <code>dynamic_asset</code> macros are no longer working as expected. Instead, you should use <code>vite_asset</code> and <code>dynamic_vite_asset</code>.</p>
+<pre><code class="language-crystal">img src: vite_asset(<span class="s">&quot;@images/logo.png&quot;</span>)</code></pre>
+<p><strong>Note</strong>: The asset helper uses Vite's aliases for easier referencings. Aliases can be configured in <code>config/lucky_vite.json</code>.</p>
+<h2><a id="configuration" class="anchor" href="#configuration">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Configuration</h2>
+<p>Lucky and Vite share some information which is managed through the <code>config/lucky_vite.json</code> file. It comes with the following defaults:</p>
+<pre><code class="language-json">{
+  &quot;aliases&quot;: [
+    &quot;css&quot;,
+    &quot;fonts&quot;,
+    &quot;images&quot;,
+    &quot;js&quot;
+  ],
+  &quot;outDir&quot;: &quot;public/assets&quot;,
+  &quot;root&quot;: &quot;src/js&quot;,
+  &quot;entry&quot;: &quot;entry&quot;,
+  &quot;host&quot;: &quot;127.0.0.1&quot;,
+  &quot;port&quot;: 3010
+}</code></pre>
+<p>Here's a bit more info about the available properties:</p>
+<ul>
+<li><strong><code>aliases</code></strong> (<em><code>string[]</code></em>): a list of directories for Vite to create aliases
+<ul>
+<li><em>default</em>: <code>[&quot;js&quot;, &quot;css&quot;, &quot;images&quot;, &quot;fonts&quot;]</code>)</li>
+<li><em>example</em>: <code>@images</code> becomes <code>src/images</code></li>
+</ul>
+</li>
+<li><strong><code>outDir</code></strong> (<em><code>string</code></em>): the target dir for Vite
+<ul>
+<li><em>default</em>: <code>&quot;public/assets&quot;</code></li>
+<li><em>note</em>: this will be cleared on every run</li>
+</ul>
+</li>
+<li><strong><code>root</code></strong> (<em><code>string</code></em>): the javascript root
+<ul>
+<li><em>default</em>: <code>&quot;src/js&quot;</code></li>
+</ul>
+</li>
+<li><strong><code>entry</code></strong> (<em><code>string</code></em>): this is where Vite looks for entry scripts
+<ul>
+<li><em>default</em>: <code>&quot;entry&quot;</code></li>
+</ul>
+</li>
+<li><strong><code>https</code></strong> (<em><code>boolean</code></em>): uses <code>https:</code> for the Vite server if set to <code>true</code>
+<ul>
+<li><em>default</em>: <code>false</code></li>
+</ul>
+</li>
+<li><strong><code>host</code></strong> (<em><code>string | boolean</code></em>): host name for the Vite server
+<ul>
+<li><em>default</em>: <code>&quot;127.0.0.1&quot;</code></li>
+<li><em>note</em>: if set to <code>true</code>, it will listen on <code>0.0.0.0</code> (all addresses)</li>
+</ul>
+</li>
+<li><strong><code>port</code></strong> (<em><code>string | number</code></em>): port for the Vite server
+<ul>
+<li><em>default</em>: <code>3010</code></li>
+</ul>
+</li>
+<li><strong><code>origin</code></strong> (<em><code>string</code></em>): alternative to using <code>https</code>, <code>host</code> and <code>port</code>
+<ul>
+<li><em>example</em>: <code>&quot;http://localhost:3210&quot;</code></li>
+</ul>
+</li>
+</ul>
+<p><strong>Note</strong>: not all Vite's configuration options are recognised here. Please open an issue or a PR if you are missing some. Alternatively, you can also add them directly in <code>vite.config.js</code>.</p>
+<h2><a id="development" class="anchor" href="#development">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Development</h2>
+<p>Make sure you have <a href="https://github.com/f/guardian">Guardian.cr</a> installed. Then run:</p>
+<pre><code class="language-bash">$ guardian</code></pre>
+<p>This will automatically:</p>
+<ul>
+<li>run ameba for src and spec files</li>
+<li>run the relevant spec for any file in src</li>
+<li>run spec file whenever they are saved</li>
+</ul>
+<h2><a id="contributing" class="anchor" href="#contributing">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Contributing</h2>
+<p>We use <a href="https://www.conventionalcommits.org/en/v1.0.0/">conventional commits</a> for our commit messages, so please adhere to that pattern.</p>
+<ol>
+<li>Fork it (<a href="https://github.com/wout/lucky_vite/fork">https://github.com/wout/lucky_vite/fork</a>)</li>
+<li>Create your feature branch (<code>git checkout -b my-new-feature</code>)</li>
+<li>Commit your changes (<code>git commit -am 'feat: new feature'</code>)</li>
+<li>Push to the branch (<code>git push origin my-new-feature</code>)</li>
+<li>Create a new Pull Request</li>
+</ol>
+<h2><a id="contributors" class="anchor" href="#contributors">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Contributors</h2>
+<ul>
+<li><a href="https://github.com/wout">Wout</a> - creator and maintainer</li>
+</ul>
+</div>
+</body>
+</html>

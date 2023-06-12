@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Crystal Docs 1.7.3">
+<meta name="crystal_docs.project_version" content="main">
+<meta name="crystal_docs.project_name" content="lucky_vite">
+
+
+
+<link href="../css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../js/doc.js"></script>
+
+  <meta name="repository-name" content="lucky_vite">
+  <title>LuckyVite::AssetHelpers - lucky_vite main</title>
+  <script type="text/javascript">
+    CrystalDocs.base_path = "../";
+  </script>
+</head>
+<body>
+
+<svg class="hidden">
+  <symbol id="octicon-link" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+  </symbol>
+</svg>
+<div class="sidebar">
+  <div class="sidebar-header">
+    <div class="search-box">
+      <input type="search" class="search-input" placeholder="Search..." spellcheck="false" aria-label="Search">
+    </div>
+
+    <div class="project-summary">
+      <h1 class="project-name">
+        <a href="../index.html">
+          lucky_vite
+        </a>
+      </h1>
+
+      <span class="project-version">
+        main
+      </span>
+    </div>
+  </div>
+
+  <div class="search-results hidden">
+    <ul class="search-list"></ul>
+  </div>
+
+  <div class="types-list">
+    <ul>
+  
+  <li class="parent " data-id="lucky_vite/Lucky" data-name="lucky">
+      <a href="../Lucky.html">Lucky</a>
+      
+        <ul>
+  
+  <li class=" " data-id="lucky_vite/Lucky/BaseComponent" data-name="lucky::basecomponent">
+      <a href="../Lucky/BaseComponent.html">BaseComponent</a>
+      
+    </li>
+  
+  <li class=" " data-id="lucky_vite/Lucky/HTMLPage" data-name="lucky::htmlpage">
+      <a href="../Lucky/HTMLPage.html">HTMLPage</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class="parent open current" data-id="lucky_vite/LuckyVite" data-name="luckyvite">
+      <a href="../LuckyVite.html">LuckyVite</a>
+      
+        <ul>
+  
+  <li class=" current" data-id="lucky_vite/LuckyVite/AssetHelpers" data-name="luckyvite::assethelpers">
+      <a href="../LuckyVite/AssetHelpers.html">AssetHelpers</a>
+      
+    </li>
+  
+  <li class=" " data-id="lucky_vite/LuckyVite/Config" data-name="luckyvite::config">
+      <a href="../LuckyVite/Config.html">Config</a>
+      
+    </li>
+  
+  <li class=" " data-id="lucky_vite/LuckyVite/Tags" data-name="luckyvite::tags">
+      <a href="../LuckyVite/Tags.html">Tags</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+  </div>
+</div>
+
+
+<div class="main-content">
+<h1 class="type-name">
+
+  <span class="kind">module</span> LuckyVite::AssetHelpers
+
+</h1>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2>
+    <a id="defined-in" class="anchor" href="#defined-in">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Defined in:
+  </h2>
+  
+    
+      <a href="https://github.com/wout/lucky_vite/blob/c0499e8ad61689f34754d81092adfed3e319979d/src/lucky_vite/asset_helpers.cr#L1" target="_blank">
+        lucky_vite/asset_helpers.cr
+      </a>
+    
+    <br/>
+  
+
+
+
+  
+    <h2>
+      <a id="constant-summary" class="anchor" href="#constant-summary">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+      Constant Summary
+    </h2>
+  
+  <dl>
+    
+      <dt class="entry-const" id="ASSET_MANIFEST">
+        <strong>ASSET_MANIFEST</strong> = <code>{} <span class="k">of</span> <span class="t">String</span> <span class="o">=&gt;</span> <span class="t">NamedTuple</span>(file: <span class="t">String</span>) <span class="o">|</span> <span class="t">NamedTuple</span>(file: <span class="t">String</span>, css: <span class="t">Array</span>(<span class="t">String</span>))</code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="CONFIG">
+        <strong>CONFIG</strong> = <code>{has_loaded_manifest: <span class="n">false</span>}</code>
+      </dt>
+      
+    
+  </dl>
+
+
+
+
+
+  <h2>
+    <a id="class-method-summary" class="anchor" href="#class-method-summary">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Class Method Summary
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#dynamic_asset%28path%3AString%29%3AString-class-method" class="signature"><strong>.dynamic_asset</strong>(path : String) : String</a>
+        
+          <div class="summary"><p>Return the string path to an asset (allows string interpolation).</p></div>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+  <h2>
+    <a id="macro-summary" class="anchor" href="#macro-summary">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Macro Summary
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#asset%28path%29-macro" class="signature"><strong>asset</strong>(path)</a>
+        
+          <div class="summary"><p>Return the string path to an asset.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#load_manifest%28config_file%3D%22%22%29-macro" class="signature"><strong>load_manifest</strong>(config_file = <span class="s">&quot;&quot;</span>)</a>
+        
+          <div class="summary"><p>Runs a macro which parses the manifest.json file generated by Vite.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#manifest_entry%28path%29-macro" class="signature"><strong>manifest_entry</strong>(path)</a>
+        
+          <div class="summary"><p>Safely gets an entry from the Vite manifest and raises a compile time error.</p></div>
+        
+      </li>
+    
+  </ul>
+
+
+
+<div class="methods-inherited">
+  
+</div>
+
+
+
+
+  <h2>
+    <a id="class-method-detail" class="anchor" href="#class-method-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Class Method Detail
+  </h2>
+  
+    <div class="entry-detail" id="dynamic_asset(path:String):String-class-method">
+      <div class="signature">
+        
+        def self.<strong>dynamic_asset</strong>(path : String) : String
+
+        <a class="method-permalink" href="#dynamic_asset%28path%3AString%29%3AString-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Return the string path to an asset (allows string interpolation).</p>
+<pre><code class="language-crystal"><span class="c"># In a page or component</span>
+<span class="c"># Will find the asset in `public/assets/images/logo.a1b2c3d4.png`</span>
+img src: dynamic_asset(<span class="s">&quot;images/logo.png&quot;</span>)
+
+<span class="c"># Can also be used elsewhere by prepending LuckyVite::AssetHelpers</span>
+<span class="t">LuckyVite</span><span class="t">::</span><span class="t">AssetHelpers</span>.dynamic_asset(<span class="s">&quot;images/logo.png&quot;</span>)</code></pre>
+<p><span class="flag purple">NOTE</span>  This method does <em>not</em> check assets at compile time. The asset path
+is found at runtime so it is possible the asset does not exist. Be sure to
+manually test that the asset is returned as expected.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wout/lucky_vite/blob/c0499e8ad61689f34754d81092adfed3e319979d/src/lucky_vite/asset_helpers.cr#L99" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+
+
+  <h2>
+    <a id="macro-detail" class="anchor" href="#macro-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Macro Detail
+  </h2>
+  
+    <div class="entry-detail" id="asset(path)-macro">
+      <div class="signature">
+        
+        macro <strong>asset</strong>(path)
+
+        <a class="method-permalink" href="#asset%28path%29-macro">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Return the string path to an asset.</p>
+<pre><code class="language-crystal"><span class="c"># In a page or component:</span>
+<span class="c"># Will find the asset in `public/assets/images/logo.a1b2c3d4.png`</span>
+img src: asset(<span class="s">&quot;images/logo.png&quot;</span>)
+
+<span class="c"># Can also be used elsewhere by prepending LuckyVite::AssetHelpers</span>
+<span class="t">LuckyVite</span><span class="t">::</span><span class="t">AssetHelpers</span>.asset(<span class="s">&quot;images/logo.png&quot;</span>)</code></pre>
+<p>Note that assets are checked at compile time so if it is not found, Lucky
+will let you know. It will also let you know if you had a typo and suggest
+an asset that is close to what you typed.</p>
+<p><span class="flag purple">NOTE</span>  This macro requires a <code>StringLiteral</code>. That means you cannot
+interpolate strings like this: <code><a href="../LuckyVite/AssetHelpers.html#asset%28path%29-macro">asset(&quot;images/icon-#{modifier}.png&quot;)</a></code>.
+instead use <code><a href="../LuckyVite/AssetHelpers.html#dynamic_asset%28path%3AString%29%3AString-class-method">.dynamic_asset</a></code> if you need string interpolation.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wout/lucky_vite/blob/c0499e8ad61689f34754d81092adfed3e319979d/src/lucky_vite/asset_helpers.cr#L37" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="load_manifest(config_file=&quot;&quot;)-macro">
+      <div class="signature">
+        
+        macro <strong>load_manifest</strong>(config_file = <span class="s">&quot;&quot;</span>)
+
+        <a class="method-permalink" href="#load_manifest%28config_file%3D%22%22%29-macro">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Runs a macro which parses the manifest.json file generated by Vite.</p>
+<pre><code class="language-crystal"><span class="c"># In src/app.cr comment out the native manifest loader and add:</span>
+<span class="t">LuckyVite</span><span class="t">::</span><span class="t">AssetHelpers</span>.load_manifest(<span class="s">&quot;public/assets/manifest.json&quot;</span>)</code></pre>
+<p>Note: Vite generates its manifest inside the assets dir.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wout/lucky_vite/blob/c0499e8ad61689f34754d81092adfed3e319979d/src/lucky_vite/asset_helpers.cr#L14" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="manifest_entry(path)-macro">
+      <div class="signature">
+        
+        macro <strong>manifest_entry</strong>(path)
+
+        <a class="method-permalink" href="#manifest_entry%28path%29-macro">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Safely gets an entry from the Vite manifest and raises a compile time
+error. It will also let you know if you had a typo and suggest an asset
+that is close to what you typed.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wout/lucky_vite/blob/c0499e8ad61689f34754d81092adfed3e319979d/src/lucky_vite/asset_helpers.cr#L47" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+</div>
+
+</body>
+</html>
