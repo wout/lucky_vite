@@ -140,7 +140,7 @@ Together they do the exact same thing as `vite_entry_tags`.
 
 #### Full control
 
-If you need even more control over the generated tags, you can use the `vite_asset` macro in combination with Lucky's `js_link` and `css_link` methods:
+If you need even more control over the generated tags, you can use the `asset` macro in combination with Lucky's `js_link` and `css_link` methods:
 
 ```crystal
 vite_client_tag
@@ -162,10 +162,10 @@ vite_client_tag
 
 ### Static assets
 
-LuckyVite manages the asset pipeline, so Lucky's `asset` and `dynamic_asset` macros are no longer working as expected. Instead, you should use `vite_asset` and `dynamic_vite_asset`.
+LuckyVite manages the asset pipeline by overwriting Lucky's `asset` and `dynamic_asset` macros.
 
 ```crystal
-img src: vite_asset("@images/logo.png")
+img src: asset("@images/logo.png")
 ```
 
 **Note**: The asset helper uses Vite's aliases for easier referencings. Aliases can be configured in `config/lucky_vite.json`.
