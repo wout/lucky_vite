@@ -11,8 +11,8 @@ module LuckyVite::AssetHelpers
   # ```
   #
   # Note: Vite generates its manifest inside the assets dir.
-  macro load_manifest(manifest_file)
-    {{ run "../lucky_vite_runners/asset_manifest_builder", manifest_file }}
+  macro load_manifest(config_file = "")
+    {{ run "../lucky_vite_runners/asset_manifest_builder", config_file }}
     {% CONFIG[:has_loaded_manifest] = true %}
   end
 

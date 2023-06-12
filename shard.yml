@@ -22,6 +22,8 @@ development_dependencies:
     branch: master
   lucky:
     github: luckyframework/lucky
+  lucky_env:
+    github: luckyframework/lucky_env
 
 scripts:
   postinstall: make shim

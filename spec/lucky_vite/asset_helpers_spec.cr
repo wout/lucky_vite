@@ -1,10 +1,6 @@
 require "../spec_helper"
 
 describe LuckyVite::AssetHelpers do
-  before_all do
-    LuckyVite::AssetHelpers.load_manifest("./public/assets/manifest.json")
-  end
-
   describe ".asset" do
     it "gets the fingerprinted path" do
       LuckyVite::AssetHelpers.asset("main.js")
@@ -36,7 +32,7 @@ describe LuckyVite::AssetHelpers do
   end
 
   describe ".manifest_entry" do
-    it "gets the mafinest entry" do
+    it "gets the manifest entry" do
       LuckyVite::AssetHelpers.manifest_entry("main.js").should eq({
         file: "/assets/js/main.2d2335c4.js",
         css:  [

@@ -64,7 +64,7 @@ module LuckyVite::Tags
     {% style_or_script = SERVED_BY_VITE.includes?(entry.split(".").last) %}
 
     if LuckyEnv.development? && {{style_or_script}}
-      LuckyVite.origin_with_path({{entry.gsub(/^(@js|@css)\//)}})
+      LuckyVite.origin_with_path({{entry.gsub(/^(@js|@css)\//, "")}})
     else
       LuckyVite::AssetHelpers.{{method}}({{entry}})
     end
