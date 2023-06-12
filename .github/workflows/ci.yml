@@ -1,0 +1,49 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: "*"
+
+jobs:
+  check_format:
+    strategy:
+      fail-fast: false
+    runs-on: ubuntu-latest
+    continue-on-error: false
+    steps:
+      - uses: actions/checkout@v1
+      - uses: crystal-lang/install-crystal@v1
+        with:
+          crystal: 1.4.2
+          crystal: latest
+      - name: Install shards
+        run: shards install
+      - name: Format
+        run: crystal tool format --check
+      - name: Lint
+        run: ./bin/ameba
+  specs:
+    strategy:
+      fail-fast: false
+      matrix:
+        shard_file:
+          - shard.yml
+        crystal_version:
+          - 1.4.2
+          - latest
+        experimental:
+          - false
+    runs-on: ubuntu-latest
+    continue-on-error: ${{ matrix.experimental }}
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: crystal-lang/install-crystal@v1
+        with:
+          crystal: ${{matrix.crystal_version}}
+      - name: Install shards
+        run: SHARDS_OVERRIDE=${{ matrix.shard_file }} shards install --ignore-crystal-version
+      - name: Run tests
+        run: crystal spec
