@@ -131,7 +131,7 @@
 <p>Run <code>yarn add -D vite vite-plugin-lucky</code> to install Vite and the plugin for Lucky</p>
 </li>
 </ol>
-<p><strong>Note</strong>: Look at <a href="https://github.com/wout/vite-plugin-lucky">vite-plugin-lucky</a> for more info about the plugin.</p>
+<p>🗒️ Look at <a href="https://github.com/wout/vite-plugin-lucky">vite-plugin-lucky</a> for more info about the plugin.</p>
 <h2><a id="setup" class="anchor" href="#setup">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
@@ -158,7 +158,7 @@
 <p>Replace the <code>Lucky::AssetHelpers.load_manifest</code> line in <code>src/app.cr</code> with:</p>
 <pre><code class="language-diff">-Lucky::AssetHelpers.load_manifest &quot;public/mix-manifest.json&quot;
 +LuckyVite::AssetHelpers.load_manifest</code></pre>
-<p><strong>Note</strong>: The Vite manifest path does not need to be passed here. It's loaded from the configured <code>outDir</code> by LuckyVite. Instead, a custom location to the <code>lucky_vite.json</code> config can be passed.</p>
+<p>🗒️ The Vite manifest path does not need to be passed here. It's loaded from the configured <code>outDir</code> by LuckyVite. Instead, a custom location to the <code>lucky_vite.json</code> config can be passed.</p>
 <h3><a id="3.-register-the-vite-processes" class="anchor" href="#3.-register-the-vite-processes">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
@@ -236,7 +236,7 @@ vite_entry_tags <span class="s">&quot;main.js&quot;</span></code></pre>
 vite_js_link <span class="s">&quot;main.js&quot;</span>
 vite_css_link <span class="s">&quot;main.css&quot;</span></code></pre>
 <p>Together they do the exact same thing as <code>vite_entry_tags</code>.</p>
-<p><strong>Note</strong>: <code>vite_css_link</code> won't output anything in development as stylesheets are dynamically loaded by Vite.</p>
+<p>🗒️ <code>vite_css_link</code> won't output anything in development as stylesheets are dynamically loaded by Vite.</p>
 <h4><a id="full-control" class="anchor" href="#full-control">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
@@ -263,7 +263,7 @@ vite_client_tag
 </a>Static assets</h3>
 <p>LuckyVite manages the asset pipeline by overwriting Lucky's <code>asset</code> and <code>dynamic_asset</code> macros.</p>
 <pre><code class="language-crystal">img src: asset(<span class="s">&quot;@images/logo.png&quot;</span>)</code></pre>
-<p><strong>Note</strong>: The asset helper uses Vite's aliases for easier referencings. Aliases can be configured in <code>config/lucky_vite.json</code>.</p>
+<p>🗒️ The asset helper uses Vite's aliases for easier referencing. Aliases can be configured in <code>config/lucky_vite.json</code>.</p>
 <h2><a id="configuration" class="anchor" href="#configuration">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
@@ -329,7 +329,7 @@ vite_client_tag
 </ul>
 </li>
 </ul>
-<p><strong>Note</strong>: not all Vite's configuration options are recognised here. Please open an issue or a PR if you are missing some. Alternatively, you can also add them directly in <code>vite.config.js</code>.</p>
+<p>🗒️ Not all Vite's configuration options are recognised here as this file covers that's shared between Vite and Lucky. You can add other Vite-specific configuration options directly in <code>vite.config.js</code>.</p>
 <h2><a id="documentation" class="anchor" href="#documentation">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
