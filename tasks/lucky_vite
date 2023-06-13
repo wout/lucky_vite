@@ -6,10 +6,10 @@ source_file=./lib/lucky_vite/tasks/runner.cr
 
 if [ ! -f $lucky_vite_bin ]
 then
-  echo "Looks like the first time, generating the lucky_vite binary..."
+  echo "→ Looks like the first time, building the lucky_vite binary..."
   $crystal_bin build $source_file -o $lucky_vite_bin
   sleep 1
-  echo "Done!"
+  echo "→ Done building bin/lucky_vite."
 fi
 
 $lucky_vite_bin $*

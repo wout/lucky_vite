@@ -24,7 +24,8 @@ module LuckyVite
     private def parse_options
       OptionParser.parse do |parser|
         parser.on("--init", "Sets up the initial files") do
-          generate_initial_setup
+          report_changes(generate_initial_setup)
+          puts report_change("Done setting up files.", "→")
         end
       end
     end
@@ -37,6 +38,20 @@ module LuckyVite
           entry_dir.add_file("main.js", entry_main_js)
         end
         dir.add_file("src/css/main.css", entry_main_css)
+      end
+    end
+
+    private def report_changes(folder)
+      LuckyTemplate.snapshot(folder).keys.each do |name|
+        puts report_change(name)
+      end
+    end
+
+    private def report_change(message, symbol = "✓".colorize.green)
+      String.build do |io|
+        io << symbol
+        io << " "
+        io << message
       end
     end
 
