@@ -30,13 +30,12 @@ module LuckyVite
     end
 
     private def generate_initial_setup
-      entry = LuckyTemplate.create_folder do |dir|
-        dir.add_file("main.js", entry_main_js)
-      end
       LuckyTemplate.write!(Path["."]) do |dir|
         dir.add_file("config/lucky_vite.json", lucky_vite_json)
         dir.add_file("vite.config.js", vite_config_js)
-        dir.insert_folder("src/js/entry", entry)
+        dir.add_folder("src/js/entry") do |entry_dir|
+          entry_dir.add_file("main.js", entry_main_js)
+        end
         dir.add_file("src/css/main.css", entry_main_css)
       end
     end
