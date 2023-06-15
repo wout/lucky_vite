@@ -23,19 +23,24 @@ module LuckyVite
 
     private def parse_options
       OptionParser.parse do |parser|
-        parser.on("--init", "Sets up the initial files") do
-          puts report_task("Done setting up files.", "→")
+        parser.banner = "Usage: bin/lucky_vite [subcommand] [arguments]"
+        parser.on("init", "Set up initial files") do
+          parser.banner = "Usage: bin/lucky_vite init [arguments]"
+          generate_initial_setup("main")
+          parser.on("-n NAME", "--name=NAME", "Set an entry script name") do |name|
+            generate_initial_setup(name)
+          end
         end
       end
     end
 
-    private def generate_initial_setup
+    private def generate_initial_setup(name)
       LuckyTemplate.write!(Path["."]) do |dir|
         {
-          "config/lucky_vite.json" => lucky_vite_json,
-          "vite.config.js"         => vite_config_js,
-          "src/js/entry/main.js"   => entry_main_js,
-          "src/css/main.css"       => entry_main_css,
+          "config/lucky_vite.json"  => lucky_vite_json,
+          "vite.config.js"          => vite_config_js,
+          "src/js/entry/#{name}.js" => entry_main_js,
+          "src/css/#{name}.css"     => entry_main_css,
         }.each do |file, content|
           if File.exists?(file)
             report_task(
@@ -48,6 +53,7 @@ module LuckyVite
           end
         end
       end
+      report_task("Done setting up files.", "→")
     end
 
     private def report_task(message, symbol = "✓".colorize.green)
