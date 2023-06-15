@@ -43,12 +43,12 @@ module LuckyVite
       }.each do |file, content|
         if File.exists?(file)
           report_task(
-            file + " " + "exists".colorize.yellow.bold.to_s,
+            "Existing".colorize.yellow.to_s + " " + file,
             "⸰".colorize.yellow
           )
         else
           File.write(file, content)
-          report_task(file + " " + "created".colorize.yellow.bold.to_s)
+          report_task("Creating".colorize.green.to_s + " " + file)
         end
       end
       report_task("Done setting up files.", "→")
