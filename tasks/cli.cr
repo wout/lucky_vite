@@ -56,12 +56,12 @@ module LuckyVite
     private def lucky_vite_json
       <<-JSON
       {
-        "aliases": {
-          "@css": "src/css",
-          "@js": "src/js",
-          "@images": "src/images",
-          "@fonts": "src/fonts"
-        },
+        "aliases": [
+          "@css"
+          "@js"
+          "@images"
+          "@fonts"
+        ],
         "outDir": "public/assets",
         "entry": "entry",
         "host": "127.0.0.1",
