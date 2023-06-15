@@ -24,28 +24,33 @@ module LuckyVite
     private def parse_options
       OptionParser.parse do |parser|
         parser.on("--init", "Sets up the initial files") do
-          report_changes(generate_initial_setup)
-          puts report_change("Done setting up files.", "→")
+          puts report_task("Done setting up files.", "→")
         end
       end
     end
 
     private def generate_initial_setup
       LuckyTemplate.write!(Path["."]) do |dir|
-        dir.add_file("config/lucky_vite.json", lucky_vite_json)
-        dir.add_file("vite.config.js", vite_config_js)
-        dir.add_file("src/js/entry/main.js", entry_main_js)
-        dir.add_file("src/css/main.css", entry_main_css)
+        {
+          "config/lucky_vite.json" => lucky_vite_json,
+          "vite.config.js"         => vite_config_js,
+          "src/js/entry/main.js"   => entry_main_js,
+          "src/css/main.css"       => entry_main_css,
+        }.each do |file, content|
+          if File.exists?(file)
+            report_task(
+              file + " " + "exists".colorize.yellow.bold,
+              "⸰".colorize.yellow
+            )
+          else
+            dir.add_file(file, content)
+            report_task(file + " " + "created".colorize.yellow.bold)
+          end
+        end
       end
     end
 
-    private def report_changes(folder)
-      LuckyTemplate.snapshot(folder).keys.each do |name|
-        puts report_change(name)
-      end
-    end
-
-    private def report_change(message, symbol = "✓".colorize.green)
+    private def report_task(message, symbol = "✓".colorize.green)
       String.build do |io|
         io << symbol
         io << " "
