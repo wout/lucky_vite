@@ -35,22 +35,20 @@ module LuckyVite
     end
 
     private def generate_initial_setup(name)
-      LuckyTemplate.write!(Path["."]) do |dir|
-        {
-          "config/lucky_vite.json"  => lucky_vite_json,
-          "vite.config.js"          => vite_config_js,
-          "src/js/entry/#{name}.js" => entry_main_js,
-          "src/css/#{name}.css"     => entry_main_css,
-        }.each do |file, content|
-          if File.exists?(file)
-            report_task(
-              file + " " + "exists".colorize.yellow.bold.to_s,
-              "⸰".colorize.yellow
-            )
-          else
-            dir.add_file(file, content)
-            report_task(file + " " + "created".colorize.yellow.bold.to_s)
-          end
+      {
+        "config/lucky_vite.json"  => lucky_vite_json,
+        "vite.config.js"          => vite_config_js,
+        "src/js/entry/#{name}.js" => entry_main_js,
+        "src/css/#{name}.css"     => entry_main_css,
+      }.each do |file, content|
+        if File.exists?(file)
+          report_task(
+            file + " " + "exists".colorize.yellow.bold.to_s,
+            "⸰".colorize.yellow
+          )
+        else
+          File.write(file, content)
+          report_task(file + " " + "created".colorize.yellow.bold.to_s)
         end
       end
       report_task("Done setting up files.", "→")
