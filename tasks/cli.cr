@@ -55,11 +55,11 @@ module LuckyVite
     end
 
     private def report_task(message, symbol = "✓".colorize.green)
-      String.build do |io|
+      puts String.build { |io|
         io << symbol
         io << " "
         io << message
-      end
+      }
     end
 
     private def lucky_vite_json
