@@ -44,12 +44,12 @@ module LuckyVite
         }.each do |file, content|
           if File.exists?(file)
             report_task(
-              file + " " + "exists".colorize.yellow,
+              file + " " + "exists".colorize.yellow.bold.to_s,
               "⸰".colorize.yellow
             )
           else
             dir.add_file(file, content)
-            report_task(file + " " + "created".colorize.yellow)
+            report_task(file + " " + "created".colorize.yellow.bold.to_s)
           end
         end
       end
