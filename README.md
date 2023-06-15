@@ -26,7 +26,7 @@ dependencies:
 
 3. Run `yarn add -D vite vite-plugin-lucky` to install Vite and the plugin for Lucky
 
-🗒️ Look at [vite-plugin-lucky](https://github.com/wout/vite-plugin-lucky) for more info about the plugin.
+**Node**: Look at [vite-plugin-lucky](https://github.com/wout/vite-plugin-lucky) for more info about the plugin.
 
 ## Setup
 
@@ -50,7 +50,7 @@ Replace the `Lucky::AssetHelpers.load_manifest` line in `src/app.cr` with:
 +LuckyVite::AssetHelpers.load_manifest
 ```
 
-🗒️ The Vite manifest path does not need to be passed here. It's loaded from the configured `outDir` by LuckyVite. Instead, a custom location to the `lucky_vite.json` config can be passed.
+**Node**: The Vite manifest path does not need to be passed here. It's loaded from the configured `outDir` by LuckyVite. Instead, a custom location to the `lucky_vite.json` config can be passed.
 
 ### 3. Register the Vite processes
 
@@ -137,7 +137,7 @@ vite_css_link "main.css"
 
 Together they do the exact same thing as `vite_entry_tags`.
 
-🗒️ `vite_css_link` won't output anything in development as stylesheets are dynamically loaded by Vite.
+**Node**: `vite_css_link` won't output anything in development as stylesheets are dynamically loaded by Vite.
 
 #### Full control
 
@@ -169,7 +169,7 @@ LuckyVite manages the asset pipeline by overwriting Lucky's `asset` and `dynamic
 img src: asset("@images/logo.png")
 ```
 
-🗒️ The asset helper uses Vite's aliases for easier referencing. Aliases can be configured in `config/lucky_vite.json`.
+**Node**: The asset helper uses Vite's aliases for easier referencing. Aliases can be configured in `config/lucky_vite.json`.
 
 ## Configuration
 
@@ -213,7 +213,7 @@ Here's a bit more info about the available properties:
 - **`origin`** (_`string`_): alternative to using `https`, `host` and `port`
   - _example_: `"http://localhost:3210"`
 
-🗒️ Not all Vite's configuration options are recognised here as this file covers that's shared between Vite and Lucky. You can add other Vite-specific configuration options directly in `vite.config.js`.
+**Node**: Not all Vite's configuration options are recognised here as this file covers that's shared between Vite and Lucky. You can add other Vite-specific configuration options directly in `vite.config.js`.
 
 ## Documentation
 
