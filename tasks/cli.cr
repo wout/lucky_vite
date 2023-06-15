@@ -34,9 +34,7 @@ module LuckyVite
       LuckyTemplate.write!(Path["."]) do |dir|
         dir.add_file("config/lucky_vite.json", lucky_vite_json)
         dir.add_file("vite.config.js", vite_config_js)
-        dir.add_folder("src/js/entry") do |entry_dir|
-          entry_dir.add_file("main.js", entry_main_js)
-        end
+        dir.add_file("src/js/entry/main.js", entry_main_js)
         dir.add_file("src/css/main.css", entry_main_css)
       end
     end
