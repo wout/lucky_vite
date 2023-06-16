@@ -150,15 +150,16 @@
 <li><code>src/js/entry/main.js</code>: the first entry point with a basic setup</li>
 <li><code>src/css/main.css</code>: an empty stylesheet which is referenced by <code>main.js</code></li>
 </ul>
+<p><strong>Node</strong>: The initializer also accepts a name flag for the entry script: <code>bin/lucky_vite init --name=app</code>.</p>
 <h3><a id="2.-load-the-vite-manifest" class="anchor" href="#2.-load-the-vite-manifest">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
   </svg>
 </a>2. Load the Vite manifest</h3>
 <p>Replace the <code>Lucky::AssetHelpers.load_manifest</code> line in <code>src/app.cr</code> with:</p>
-<pre><code class="language-diff">-Lucky::AssetHelpers.load_manifest &quot;public/mix-manifest.json&quot;
+<pre><code class="language-diff">-Lucky::AssetHelpers.load_manifest
 +LuckyVite::AssetHelpers.load_manifest</code></pre>
-<p><strong>Node</strong>: The Vite manifest path does not need to be passed here. It's loaded from the configured <code>outDir</code> by LuckyVite. Instead, a custom location to the <code>lucky_vite.json</code> config can be passed.</p>
+<p><strong>Node</strong>: The <code>load_manifest</code> macro takes a path to the <code>lucky_vite.json</code> as the first argument.</p>
 <h3><a id="3.-register-the-vite-processes" class="anchor" href="#3.-register-the-vite-processes">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
