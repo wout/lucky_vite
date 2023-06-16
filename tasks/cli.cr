@@ -56,6 +56,8 @@ module LuckyVite
     end
 
     private def generate_file(file, content)
+      ensure_dir_exists(file)
+
       if File.exists?(file)
         report_task(
           "Existing".colorize.yellow.to_s + " " + file,
@@ -65,6 +67,11 @@ module LuckyVite
         File.write(file, content)
         report_task("Creating".colorize.green.to_s + " " + file)
       end
+    end
+
+    private def ensure_dir_exists(file)
+      dir = File.dirname(file)
+      FileUtils.mkdir_p(dir) unless File.directory?(dir)
     end
 
     private def report_task(message, symbol = "✓".colorize.green)
