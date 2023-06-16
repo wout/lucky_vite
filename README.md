@@ -41,7 +41,7 @@ Run **`bin/lucky_vite init`** to create the following files:
 - `src/js/entry/main.js`: the first entry point with a basic setup
 - `src/css/main.css`: an empty stylesheet which is referenced by `main.js`
 
-**Note**: The initializer also accepts a name flag for the entry script: `bin/lucky_vite init --name=app`.
+**Note**: The initializer accepts a name option for the entry script: `bin/lucky_vite init --name=app`.
 
 ### 2. Load the Vite manifest
 
