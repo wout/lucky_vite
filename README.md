@@ -88,7 +88,7 @@ Change the scripts section in `package.json` to use vite instead of laravel mix:
 
 ### Further steps
 
-- if you use the CI workflow for Github Actions, you'll also need to change `yarn prod` into `yarn build` in `ci.yml`
+- if you use the CI workflow for Github Actions, you need to change `yarn prod` into `yarn build` in `ci.yml`
 - you may want to exclude Vite's `outDir` (e.g. `public/assets`) from the repo
 - all the `laravel-mix` dependencies can be removed from from `package.json`
 - `webpack.mix.js` can be removed
