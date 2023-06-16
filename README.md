@@ -26,7 +26,7 @@ dependencies:
 
 3. Run `yarn add -D vite vite-plugin-lucky` to install Vite and the plugin for Lucky
 
-**Node**: Look at [vite-plugin-lucky](https://github.com/wout/vite-plugin-lucky) for more info about the plugin.
+**Note**: Look at [vite-plugin-lucky](https://github.com/wout/vite-plugin-lucky) for more info about the plugin.
 
 ## Setup
 
@@ -41,7 +41,7 @@ Run **`bin/lucky_vite init`** to create the following files:
 - `src/js/entry/main.js`: the first entry point with a basic setup
 - `src/css/main.css`: an empty stylesheet which is referenced by `main.js`
 
-**Node**: The initializer also accepts a name flag for the entry script: `bin/lucky_vite init --name=app`.
+**Note**: The initializer also accepts a name flag for the entry script: `bin/lucky_vite init --name=app`.
 
 ### 2. Load the Vite manifest
 
@@ -52,7 +52,7 @@ Replace the `Lucky::AssetHelpers.load_manifest` line in `src/app.cr` with:
 +LuckyVite::AssetHelpers.load_manifest
 ```
 
-**Node**: The `load_manifest` macro takes a path to the `lucky_vite.json` as the first argument.
+**Note**: The `load_manifest` macro optionally takes a path to the `lucky_vite.json` config.
 
 ### 3. Register the Vite processes
 
@@ -139,7 +139,7 @@ vite_css_link "main.css"
 
 Together they do the exact same thing as `vite_entry_tags`.
 
-**Node**: `vite_css_link` won't output anything in development as stylesheets are dynamically loaded by Vite.
+**Note**: `vite_css_link` won't output anything in development as stylesheets are dynamically loaded by Vite.
 
 #### Full control
 
@@ -171,7 +171,7 @@ LuckyVite manages the asset pipeline by overwriting Lucky's `asset` and `dynamic
 img src: asset("@images/logo.png")
 ```
 
-**Node**: The asset helper uses Vite's aliases for easier referencing. Aliases can be configured in `config/lucky_vite.json`.
+**Note**: The asset helper uses Vite's aliases for easier referencing. Aliases can be configured in `config/lucky_vite.json`.
 
 ## Configuration
 
@@ -215,7 +215,7 @@ Here's a bit more info about the available properties:
 - **`origin`** (_`string`_): alternative to using `https`, `host` and `port`
   - _example_: `"http://localhost:3210"`
 
-**Node**: Not all Vite's configuration options are recognised here as this file covers that's shared between Vite and Lucky. You can add other Vite-specific configuration options directly in `vite.config.js`.
+**Note**: Not all Vite's configuration options are recognised here as this file covers that's shared between Vite and Lucky. You can add other Vite-specific configuration options directly in `vite.config.js`.
 
 ## Documentation
 
