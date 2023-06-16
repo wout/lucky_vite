@@ -41,16 +41,18 @@ Run **`bin/lucky_vite init`** to create the following files:
 - `src/js/entry/main.js`: the first entry point with a basic setup
 - `src/css/main.css`: an empty stylesheet which is referenced by `main.js`
 
+**Node**: The initializer also accepts a name flag for the entry script: `bin/lucky_vite init --name=app`.
+
 ### 2. Load the Vite manifest
 
 Replace the `Lucky::AssetHelpers.load_manifest` line in `src/app.cr` with:
 
 ```diff
--Lucky::AssetHelpers.load_manifest "public/mix-manifest.json"
+-Lucky::AssetHelpers.load_manifest
 +LuckyVite::AssetHelpers.load_manifest
 ```
 
-**Node**: The Vite manifest path does not need to be passed here. It's loaded from the configured `outDir` by LuckyVite. Instead, a custom location to the `lucky_vite.json` config can be passed.
+**Node**: The `load_manifest` macro takes a path to the `lucky_vite.json` as the first argument.
 
 ### 3. Register the Vite processes
 
