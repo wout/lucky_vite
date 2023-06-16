@@ -86,10 +86,10 @@ module LuckyVite
       <<-JSON
       {
         "aliases": [
-          "@css",
-          "@js",
-          "@images",
-          "@fonts"
+          "css",
+          "js",
+          "images",
+          "fonts"
         ],
         "outDir": "public/assets",
         "entry": "entry",
