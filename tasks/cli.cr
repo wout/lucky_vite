@@ -22,13 +22,28 @@ module LuckyVite
     end
 
     private def parse_options
+      named = false
+
       OptionParser.parse do |parser|
         parser.banner = "Usage: bin/lucky_vite [subcommand] [arguments]"
         parser.on("init", "Set up initial files") do
           parser.banner = "Usage: bin/lucky_vite init [arguments]"
-          generate_initial_setup("main")
+
           parser.on("-n NAME", "--name=NAME", "Set an entry script name") do |name|
             generate_initial_setup(name)
+            named = true
+          end
+          generate_initial_setup("main") unless named
+
+          parser.on("-h", "--help", "Show this help") do
+            puts parser
+            exit
+          end
+
+          parser.invalid_option do |flag|
+            STDERR.puts "ERROR: #{flag} is not a valid option."
+            STDERR.puts parser
+            exit 1
           end
         end
       end
