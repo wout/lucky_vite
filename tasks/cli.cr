@@ -46,7 +46,7 @@ module LuckyVite
 
       case action
       when Action::Init
-        generate_initial_setup(name)
+        generate_initial_setup(entry_name)
       else
         puts options_parser
         exit 1
