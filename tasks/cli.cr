@@ -48,7 +48,7 @@ module LuckyVite
       {
         "config/lucky_vite.json"  => lucky_vite_json,
         "vite.config.js"          => vite_config_js,
-        "src/js/entry/#{name}.js" => entry_main_js,
+        "src/js/entry/#{name}.js" => entry_main_js(name),
         "src/css/#{name}.css"     => entry_main_css,
       }.each { |file, content| generate_file(file, content) }
 
@@ -108,7 +108,7 @@ module LuckyVite
       JS
     end
 
-    private def entry_main_js
+    private def entry_main_js(name)
       <<-JS
       // Add this line to the beginning of every entry script
       import 'vite/modulepreload-polyfill'
@@ -119,8 +119,8 @@ module LuckyVite
         // '@fonts/**',  // <- alias to src/fonts
       ])
 
-      // Point to src/css/main.css
-      import '@css/main.css'
+      // Point to src/css/#{name}.css
+      import '@css/#{name}.css'
 
       console.log('🚀️ Lucky Vite!')
 
