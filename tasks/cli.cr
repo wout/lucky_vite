@@ -71,7 +71,7 @@ module LuckyVite
 
     private def ensure_dir_exists(file)
       dir = File.dirname(file)
-      FileUtils.mkdir_p(dir) unless File.directory?(dir)
+      Dir.mkdir_p(dir) unless File.directory?(dir)
     end
 
     private def report_task(message, symbol = "✓".colorize.green)
