@@ -4,6 +4,10 @@ require "lucky_template"
 
 module LuckyVite
   struct Cli
+    enum Action
+      Init
+    end
+
     def call
       ensure_arguments
       parse_options
@@ -22,30 +26,30 @@ module LuckyVite
     end
 
     private def parse_options
-      named = false
+      action = nil
+      entry_name = "main"
 
-      OptionParser.parse do |parser|
+      options_parser = OptionParser.parse do |parser|
         parser.banner = "Usage: bin/lucky_vite [subcommand] [arguments]"
         parser.on("init", "Set up initial files") do
+          action = Action::Init
           parser.banner = "Usage: bin/lucky_vite init [arguments]"
-
           parser.on("-n NAME", "--name=NAME", "Set an entry script name") do |name|
-            generate_initial_setup(name)
-            named = true
-          end
-          generate_initial_setup("main") unless named
-
-          parser.on("-h", "--help", "Show this help") do
-            puts parser
-            exit
-          end
-
-          parser.invalid_option do |flag|
-            STDERR.puts "ERROR: #{flag} is not a valid option."
-            STDERR.puts parser
-            exit 1
+            entry_name = name
           end
         end
+        parser.on("-h", "--help", "Show this help") do
+          puts parser
+          exit
+        end
+      end
+
+      case action
+      when Action::Init
+        generate_initial_setup(name)
+      else
+        puts options_parser
+        exit 1
       end
     end
 
@@ -55,18 +59,21 @@ module LuckyVite
         "vite.config.js"          => vite_config_js,
         "src/js/entry/#{name}.js" => entry_main_js,
         "src/css/#{name}.css"     => entry_main_css,
-      }.each do |file, content|
-        if File.exists?(file)
-          report_task(
-            "Existing".colorize.yellow.to_s + " " + file,
-            "⸰".colorize.yellow
-          )
-        else
-          File.write(file, content)
-          report_task("Creating".colorize.green.to_s + " " + file)
-        end
-      end
+      }.each { |file, content| generate_file(file, content) }
+
       report_task("Done setting up files.", "→")
+    end
+
+    private def generate_file(file, content)
+      if File.exists?(file)
+        report_task(
+          "Existing".colorize.yellow.to_s + " " + file,
+          "⸰".colorize.yellow
+        )
+      else
+        File.write(file, content)
+        report_task("Creating".colorize.green.to_s + " " + file)
+      end
     end
 
     private def report_task(message, symbol = "✓".colorize.green)
