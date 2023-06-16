@@ -9,20 +9,11 @@ module LuckyVite
     end
 
     def call
-      ensure_arguments
       parse_options
     rescue e : Exception
       puts e.message.colorize.red
     ensure
       exit
-    end
-
-    private def ensure_arguments
-      return unless ARGV.empty?
-
-      raise <<-ERROR
-      Run "bin/lucky_vite --init" to generate the initial files
-      ERROR
     end
 
     private def parse_options
