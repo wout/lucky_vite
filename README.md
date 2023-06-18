@@ -12,6 +12,8 @@ A Crystal shard to seamlessly integrate [Vite](https://vitejs.dev/) with [Lucky 
 ![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/wout/lucky_vite)
 ![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/wout/lucky_vite/ci.yml?branch=main)
 
+**Note**: This shard follows Vite's instruction on how to [use Vite with a backend framework](https://vitejs.dev/guide/backend-integration.html#backend-integration).
+
 ## Installation
 
 1. Add the dependency to your `shard.yml`:
