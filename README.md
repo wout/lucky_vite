@@ -6,13 +6,19 @@
   Lucky Vite
 </h1>
 
-A Crystal shard to seamlessly integrate [Vite](https://vitejs.dev/) with [Lucky Framework](https://luckyframework.org/).
+<h3 align="center">
+  A Crystal shard to seamlessly integrate [Vite](https://vitejs.dev/) with [Lucky Framework](https://luckyframework.org/).
+</h3>
 
-![GitHub](https://img.shields.io/github/license/wout/lucky_vite)
-![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/wout/lucky_vite)
-![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/wout/lucky_vite/ci.yml?branch=main)
+<div align="center">
+  ![GitHub](https://img.shields.io/github/license/wout/lucky_vite)
+  ![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/wout/lucky_vite)
+  ![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/wout/lucky_vite/ci.yml?branch=main)
+</div>
 
-**Note**: This shard follows Vite's instruction on how to [use Vite with a backend framework](https://vitejs.dev/guide/backend-integration.html#backend-integration).
+<div align="center">
+  This shard follows Vite's instruction on how to [use Vite with a backend framework](https://vitejs.dev/guide/backend-integration.html#backend-integration).
+</div>
 
 ## Installation
 
