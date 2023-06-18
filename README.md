@@ -7,7 +7,7 @@
 </h1>
 
 <h3 align="center">
-  A Crystal shard to seamlessly integrate <a href="https://vitejs.dev/" tagret="_blank">Vite</a> with <a href="https://luckyframework.org/" tagret="_blank">.
+  A Crystal shard to seamlessly integrate <a href="https://vitejs.dev/" tagret="_blank">Vite</a> with <a href="https://luckyframework.org/" tagret="_blank">Lucky Framework</a>.
 </h3>
 
 <div align="center">
@@ -17,7 +17,7 @@
 </div>
 
 <div align="center">
-  This shard follows Vite's instruction on how to <a href="https://vitejs.dev/guide/backend-integration.html#backend-integration" target="_blank">use Vite with a backend framework</a>
+  This shard follows Vite's instructions on how to <a href="https://vitejs.dev/guide/backend-integration.html#backend-integration" target="_blank">use Vite with a backend framework</a>
 </div>
 
 ## Installation
