@@ -1,6 +1,5 @@
 require "colorize"
 require "option_parser"
-require "lucky_template"
 
 module LuckyVite
   struct Cli
