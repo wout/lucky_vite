@@ -1,5 +1,4 @@
 require "json"
 require "uri"
 require "./lucky_vite/config"
-require "./lucky_vite/version"
 require "./lucky_vite/**"
