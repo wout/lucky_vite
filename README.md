@@ -155,8 +155,8 @@ If you need even more control over the generated tags, you can use the `asset` m
 
 ```crystal
 vite_client_tag
-js_link vite_asset("main.js"), type: "module"
-css_link vite_asset("main.css") unless LuckyEnv.development?
+js_link asset("main.js"), type: "module"
+css_link asset("main.css") unless LuckyEnv.development?
 ```
 
 The example above does the exact same thing as `vite_entry_tags`.
