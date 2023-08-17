@@ -210,6 +210,7 @@ web: lucky watch --reload-browser
 </a>Further steps</h3>
 <ul>
 <li>if you use the CI workflow for Github Actions, you need to change <code>yarn prod</code> into <code>yarn build</code> in <code>ci.yml</code></li>
+<li>if you use <code>script/setup</code>, uncomment <code>yarn dev | indent</code> under <code>Compiling assets</code></li>
 <li>you may want to exclude Vite's <code>outDir</code> (e.g. <code>public/assets</code>) from the repo</li>
 <li>all the <code>laravel-mix</code> dependencies can be removed from from <code>package.json</code></li>
 <li><code>webpack.mix.js</code> can be removed</li>
@@ -286,12 +287,7 @@ vite_client_tag
 </a>Configuration</h2>
 <p>Lucky and Vite share some information which is managed through the <code>config/lucky_vite.json</code> file. It comes with the following defaults:</p>
 <pre><code class="language-json">{
-  &quot;aliases&quot;: [
-    &quot;css&quot;,
-    &quot;fonts&quot;,
-    &quot;images&quot;,
-    &quot;js&quot;
-  ],
+  &quot;aliases&quot;: [&quot;css&quot;, &quot;fonts&quot;, &quot;images&quot;, &quot;js&quot;],
   &quot;outDir&quot;: &quot;public/assets&quot;,
   &quot;root&quot;: &quot;src/js&quot;,
   &quot;entry&quot;: &quot;entry&quot;,
