@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Crystal Docs 1.8.2">
+<meta name="generator" content="Crystal Docs 1.10.1">
 <meta name="crystal_docs.project_version" content="main">
 <meta name="crystal_docs.project_name" content="lucky_vite">
 
@@ -23,7 +23,7 @@
 
 <svg class="hidden">
   <symbol id="octicon-link" viewBox="0 0 16 16">
-    <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+    <path fill="currentColor" fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
   </symbol>
 </svg>
 <input type="checkbox" id="sidebar-btn">
@@ -111,7 +111,7 @@
 <div class="main-content">
 <h1 class="type-name">
 
-  <span class="kind">module</span> LuckyVite::Tags
+  <span class="kind">module</span> LuckyVite::<wbr>Tags
 
 </h1>
 
@@ -156,7 +156,7 @@
   </h2>
   
     
-      <a href="https://github.com/wout/lucky_vite/blob/b184c57a2faf231ac3dc4eac5837660f8e41c38f/src/lucky_vite/tags.cr#L1" target="_blank">
+      <a href="https://github.com/wout/lucky_vite/blob/1d355657bb98f61befc7685a048bf37901f6e9de/src/lucky_vite/tags.cr#L1" target="_blank">
         lucky_vite/tags.cr
       </a>
     
@@ -187,34 +187,6 @@
 
 
 
-
-
-
-  <h2>
-    <a id="instance-method-summary" class="anchor" href="#instance-method-summary">
-  <svg class="octicon-link" aria-hidden="true">
-    <use href="#octicon-link"/>
-  </svg>
-</a>
-    Instance Method Summary
-  </h2>
-  <ul class="list-summary">
-    
-      <li class="entry-summary">
-        <a href="#vite_client_tag%28%2A%2Aoptions%29-instance-method" class="signature"><strong>#vite_client_tag</strong>(**options)</a>
-        
-          <div class="summary"><p>Renders the Vite client to enable Hot Module Reload in development.</p></div>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#vite_react_refresh_tag%28%2A%2Aoptions%29-instance-method" class="signature"><strong>#vite_react_refresh_tag</strong>(**options)</a>
-        
-          <div class="summary"><p>Loads <code>/@react-refresh</code> from the vite server and renders a script tag with the refresh hook.</p></div>
-        
-      </li>
-    
-  </ul>
 
 
 
@@ -267,70 +239,40 @@
 
 
 
+  <h2>
+    <a id="instance-method-summary" class="anchor" href="#instance-method-summary">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Instance Method Summary
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#vite_client_tag%28%2A%2Aoptions%29-instance-method" class="signature"><strong>#vite_client_tag</strong>(**options)</a>
+        
+          <div class="summary"><p>Renders the Vite client to enable Hot Module Reload in development.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#vite_react_refresh_tag%28%2A%2Aoptions%29-instance-method" class="signature"><strong>#vite_react_refresh_tag</strong>(**options)</a>
+        
+          <div class="summary"><p>Loads <code>/@react-refresh</code> from the vite server and renders a script tag with the refresh hook.</p></div>
+        
+      </li>
+    
+  </ul>
+
+
+
 <div class="methods-inherited">
   
 </div>
 
 
 
-
-
-
-  <h2>
-    <a id="instance-method-detail" class="anchor" href="#instance-method-detail">
-  <svg class="octicon-link" aria-hidden="true">
-    <use href="#octicon-link"/>
-  </svg>
-</a>
-    Instance Method Detail
-  </h2>
-  
-    <div class="entry-detail" id="vite_client_tag(**options)-instance-method">
-      <div class="signature">
-        
-        def <strong>vite_client_tag</strong>(**options)
-
-        <a class="method-permalink" href="#vite_client_tag%28%2A%2Aoptions%29-instance-method">#</a>
-      </div>
-      
-        <div class="doc">
-          
-          <p>Renders the Vite client to enable Hot Module Reload in development.</p>
-        </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/wout/lucky_vite/blob/b184c57a2faf231ac3dc4eac5837660f8e41c38f/src/lucky_vite/tags.cr#L5" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="vite_react_refresh_tag(**options)-instance-method">
-      <div class="signature">
-        
-        def <strong>vite_react_refresh_tag</strong>(**options)
-
-        <a class="method-permalink" href="#vite_react_refresh_tag%28%2A%2Aoptions%29-instance-method">#</a>
-      </div>
-      
-        <div class="doc">
-          
-          <p>Loads <code>/@react-refresh</code> from the vite server and renders a script tag with
-the refresh hook.</p>
-<pre><code class="language-crystal"><span class="c"># In a page or component:</span>
-vite_react_refresh_tag</code></pre>
-<p>Only use this tag with <code>@vitejs/plugin-react</code>.</p>
-        </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/wout/lucky_vite/blob/b184c57a2faf231ac3dc4eac5837660f8e41c38f/src/lucky_vite/tags.cr#L81" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
 
 
 
@@ -360,7 +302,7 @@ production.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/wout/lucky_vite/blob/b184c57a2faf231ac3dc4eac5837660f8e41c38f/src/lucky_vite/tags.cr#L51" target="_blank">View source</a>]
+          [<a href="https://github.com/wout/lucky_vite/blob/1d355657bb98f61befc7685a048bf37901f6e9de/src/lucky_vite/tags.cr#L51" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -382,7 +324,7 @@ vite server in development or as a static file in production.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/wout/lucky_vite/blob/b184c57a2faf231ac3dc4eac5837660f8e41c38f/src/lucky_vite/tags.cr#L57" target="_blank">View source</a>]
+          [<a href="https://github.com/wout/lucky_vite/blob/1d355657bb98f61befc7685a048bf37901f6e9de/src/lucky_vite/tags.cr#L57" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -404,7 +346,7 @@ vite server in development or as a static file in production.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/wout/lucky_vite/blob/b184c57a2faf231ac3dc4eac5837660f8e41c38f/src/lucky_vite/tags.cr#L43" target="_blank">View source</a>]
+          [<a href="https://github.com/wout/lucky_vite/blob/1d355657bb98f61befc7685a048bf37901f6e9de/src/lucky_vite/tags.cr#L43" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -428,7 +370,7 @@ environments it loads compiled files from the manifest.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/wout/lucky_vite/blob/b184c57a2faf231ac3dc4eac5837660f8e41c38f/src/lucky_vite/tags.cr#L17" target="_blank">View source</a>]
+          [<a href="https://github.com/wout/lucky_vite/blob/1d355657bb98f61befc7685a048bf37901f6e9de/src/lucky_vite/tags.cr#L17" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -450,7 +392,65 @@ environments it loads compiled files from the manifest.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/wout/lucky_vite/blob/b184c57a2faf231ac3dc4eac5837660f8e41c38f/src/lucky_vite/tags.cr#L36" target="_blank">View source</a>]
+          [<a href="https://github.com/wout/lucky_vite/blob/1d355657bb98f61befc7685a048bf37901f6e9de/src/lucky_vite/tags.cr#L36" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+  <h2>
+    <a id="instance-method-detail" class="anchor" href="#instance-method-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Instance Method Detail
+  </h2>
+  
+    <div class="entry-detail" id="vite_client_tag(**options)-instance-method">
+      <div class="signature">
+        
+        def <strong>vite_client_tag</strong>(**options)
+
+        <a class="method-permalink" href="#vite_client_tag%28%2A%2Aoptions%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Renders the Vite client to enable Hot Module Reload in development.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wout/lucky_vite/blob/1d355657bb98f61befc7685a048bf37901f6e9de/src/lucky_vite/tags.cr#L5" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="vite_react_refresh_tag(**options)-instance-method">
+      <div class="signature">
+        
+        def <strong>vite_react_refresh_tag</strong>(**options)
+
+        <a class="method-permalink" href="#vite_react_refresh_tag%28%2A%2Aoptions%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Loads <code>/@react-refresh</code> from the vite server and renders a script tag with
+the refresh hook.</p>
+<pre><code class="language-crystal"><span class="c"># In a page or component:</span>
+vite_react_refresh_tag</code></pre>
+<p>Only use this tag with <code>@vitejs/plugin-react</code>.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/wout/lucky_vite/blob/1d355657bb98f61befc7685a048bf37901f6e9de/src/lucky_vite/tags.cr#L81" target="_blank">View source</a>]
         
       </div>
     </div>
