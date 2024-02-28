@@ -16,15 +16,15 @@ module LuckyVite::Tags
   # environments it loads compiled files from the manifest.
   macro vite_entry_tags(entry, **options)
     if LuckyEnv.development?
-      vite_client_tag({{**options}})
-      vite_js_link {{entry}}{% unless options.empty? %}, {{**options}}{% end %}
+      vite_client_tag({{options.double_splat}})
+      vite_js_link {{entry}}{% unless options.empty? %}, {{options.double_splat}}{% end %}
     else
       asset = LuckyVite::AssetHelpers.manifest_entry({{entry}})
-      js_link asset[:file], type: "module"{% unless options.empty? %}, {{**options}}{% end %}
+      js_link asset[:file], type: "module"{% unless options.empty? %}, {{options.double_splat}}{% end %}
 
       if styles = asset[:css]?
         styles.each do |file|
-          css_link file{% unless options.empty? %}, {{**options}}{% end %}
+          css_link file{% unless options.empty? %}, {{options.double_splat}}{% end %}
         end
       end
     end
@@ -34,7 +34,7 @@ module LuckyVite::Tags
   #
   # Additional tag attributes can be passed in as named arguments.
   macro vite_js_link(entry, **options)
-    js_link asset({{entry}}), type: "module"{% unless options.empty? %}, {{**options}}{% end %}
+    js_link asset({{entry}}), type: "module"{% unless options.empty? %}, {{options.double_splat}}{% end %}
   end
 
   # Generates a stylesheet link tag for the given entrypoint.
@@ -42,7 +42,7 @@ module LuckyVite::Tags
   # Additional tag attributes can be passed in as named arguments.
   macro vite_css_link(entry, **options)
     unless LuckyEnv.development?
-      css_link LuckyVite::AssetHelpers.asset({{entry}}){% unless options.empty? %}, {{**options}}{% end %}
+      css_link LuckyVite::AssetHelpers.asset({{entry}}){% unless options.empty? %}, {{options.double_splat}}{% end %}
     end
   end
 
