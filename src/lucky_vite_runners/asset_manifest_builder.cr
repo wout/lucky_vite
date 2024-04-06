@@ -29,7 +29,11 @@ private struct LuckyViteAssetManifestBuilder
   end
 
   private def resolve_manifest_path
-    File.expand_path(File.join(config.out_dir, "manifest.json"))
+    dir = File.join(config.out_dir, ".vite")
+
+    File.expand_path(
+      File.join(Dir.exists?(dir) ? dir : config.out_dir, "manifest.json")
+    )
   end
 
   private def retry_or_raise_error
