@@ -128,6 +128,10 @@ require "lucky_vite"
 
 This shard provides three levels of control over the individual Vite tags.
 
+**Important**: All `vite_*` tags should be placed at the absolute bottom of your
+<head> element. HMR functionality will remove all tags between the entry point
+tag and the end of head.
+
 #### Hands-off
 
 The `vite_entry_tags` macro method serves all your Vite needs, but it gives you the least amount of control over the individual tags that are generated:
