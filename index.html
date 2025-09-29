@@ -203,6 +203,17 @@ web: lucky watch --reload-browser
   },
   // ...
 }</code></pre>
+<h3><a id="5.-add-manifest-setup" class="anchor" href="#5.-add-manifest-setup">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>5. Add manifest setup</h3>
+<p>In <code>script/setup.cr</code>, find the &quot;Compiling assets&quot; step and change the command:</p>
+<pre><code class="language-diff"># ...
+notice &quot;Compiling assets&quot;
+- run_command &quot;yarn&quot;, &quot;dev&quot;
++ run_command &quot;yarn&quot;, &quot;run&quot;, &quot;vite&quot;, &quot;build&quot;
+# ...</code></pre>
 <h3><a id="further-steps" class="anchor" href="#further-steps">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
@@ -210,7 +221,6 @@ web: lucky watch --reload-browser
 </a>Further steps</h3>
 <ul>
 <li>if you use the CI workflow for Github Actions, you need to change <code>yarn prod</code> into <code>yarn build</code> in <code>ci.yml</code></li>
-<li>if you use <code>script/setup</code>, uncomment <code>yarn dev | indent</code> under <code>Compiling assets</code></li>
 <li>you may want to exclude Vite's <code>outDir</code> (e.g. <code>public/assets</code>) from the repo</li>
 <li>all the <code>laravel-mix</code> dependencies can be removed from from <code>package.json</code></li>
 <li><code>webpack.mix.js</code> can be removed</li>
