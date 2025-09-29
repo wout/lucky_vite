@@ -239,6 +239,9 @@ notice &quot;Compiling assets&quot;
   </svg>
 </a>Tags</h3>
 <p>This shard provides three levels of control over the individual Vite tags.</p>
+<p><strong>Important</strong>: All <code>vite_*</code> tags should be placed at the absolute bottom of your</p>
+<head> element. HMR functionality will remove all tags between the entry point
+tag and the end of head.
 <h4><a id="hands-off" class="anchor" href="#hands-off">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
