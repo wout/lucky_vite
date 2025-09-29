@@ -128,9 +128,7 @@ require "lucky_vite"
 
 This shard provides three levels of control over the individual Vite tags.
 
-**Important**: All `vite_*` tags should be placed at the absolute bottom of your
-<head> element. HMR functionality will remove all tags between the entry point
-tag and the end of head.
+**Important**: All `vite_*` tags should be placed at the absolute bottom of your <head> element. HMR functionality will remove all tags between the entry point tag and the end of head.
 
 #### Hands-off
 
@@ -164,9 +162,7 @@ vite_css_links "main.js"
 ```
 Together they do the exact same thing as `vite_entry_tags`.
 
-**Note**: the `vite_css_links` macro takes the main JS entry point as an
-argument, because that's where the CSS is imported. This macro will only
-generate output in production.
+**Note**: the `vite_css_links` macro takes the main JS entry point as an argument, because that's where the CSS is imported. This macro will only generate output in production.
 
 #### Full control
 
