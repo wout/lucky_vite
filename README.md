@@ -155,7 +155,7 @@ If you need different attribtues on style tags than on script tags, you can use 
 
 ```crystal
 vite_client_tag
-vite_js_link "main.js"
+vite_js_link "main.js", defer: true
 vite_css_links "main.js"
 ```
 Together they do the exact same thing as `vite_entry_tags`.
