@@ -259,7 +259,7 @@ vite_entry_tags <span class="s">&quot;main.js&quot;</span></code></pre>
 </a>A bit of control</h4>
 <p>If you need different attribtues on style tags than on script tags, you can use the following three methods:</p>
 <pre><code class="language-crystal">vite_client_tag
-vite_js_link <span class="s">&quot;main.js&quot;</span>
+vite_js_link <span class="s">&quot;main.js&quot;</span>, defer: <span class="n">true</span>
 vite_css_links <span class="s">&quot;main.js&quot;</span></code></pre>
 <p>Together they do the exact same thing as <code>vite_entry_tags</code>.</p>
 <p><strong>Note</strong>: the <code>vite_css_links</code> macro takes the main JS entry point as an
