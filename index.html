@@ -239,9 +239,7 @@ notice &quot;Compiling assets&quot;
   </svg>
 </a>Tags</h3>
 <p>This shard provides three levels of control over the individual Vite tags.</p>
-<p><strong>Important</strong>: All <code>vite_*</code> tags should be placed at the absolute bottom of your</p>
-<head> element. HMR functionality will remove all tags between the entry point
-tag and the end of head.
+<p><strong>Important</strong>: All <code>vite_*</code> tags should be placed at the absolute bottom of your <head> element. HMR functionality will remove all tags between the entry point tag and the end of head.</p>
 <h4><a id="hands-off" class="anchor" href="#hands-off">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
@@ -265,9 +263,7 @@ vite_entry_tags <span class="s">&quot;main.js&quot;</span></code></pre>
 vite_js_link <span class="s">&quot;main.js&quot;</span>, defer: <span class="n">true</span>
 vite_css_links <span class="s">&quot;main.js&quot;</span></code></pre>
 <p>Together they do the exact same thing as <code>vite_entry_tags</code>.</p>
-<p><strong>Note</strong>: the <code>vite_css_links</code> macro takes the main JS entry point as an
-argument, because that's where the CSS is imported. This macro will only
-generate output in production.</p>
+<p><strong>Note</strong>: the <code>vite_css_links</code> macro takes the main JS entry point as an argument, because that's where the CSS is imported. This macro will only generate output in production.</p>
 <h4><a id="full-control" class="anchor" href="#full-control">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
