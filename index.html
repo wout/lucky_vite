@@ -260,9 +260,11 @@ vite_entry_tags <span class="s">&quot;main.js&quot;</span></code></pre>
 <p>If you need different attribtues on style tags than on script tags, you can use the following three methods:</p>
 <pre><code class="language-crystal">vite_client_tag
 vite_js_link <span class="s">&quot;main.js&quot;</span>
-vite_css_link <span class="s">&quot;main.css&quot;</span></code></pre>
+vite_css_links <span class="s">&quot;main.js&quot;</span></code></pre>
 <p>Together they do the exact same thing as <code>vite_entry_tags</code>.</p>
-<p><strong>Note</strong>: <code>vite_css_link</code> won't output anything in development as stylesheets are dynamically loaded by Vite.</p>
+<p><strong>Note</strong>: the <code>vite_css_links</code> macro takes the main JS entry point as an
+argument, because that's where the CSS is imported. This macro will only
+generate output in production.</p>
 <h4><a id="full-control" class="anchor" href="#full-control">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
@@ -271,7 +273,7 @@ vite_css_link <span class="s">&quot;main.css&quot;</span></code></pre>
 <p>If you need even more control over the generated tags, you can use the <code>asset</code> macro in combination with Lucky's <code>js_link</code> and <code>css_link</code> methods:</p>
 <pre><code class="language-crystal">vite_client_tag
 js_link asset(<span class="s">&quot;main.js&quot;</span>), <span class="k">type</span>: <span class="s">&quot;module&quot;</span>
-css_link asset(<span class="s">&quot;main.css&quot;</span>) <span class="k">unless</span> <span class="t">LuckyEnv</span>.development?</code></pre>
+vite_css_links <span class="s">&quot;main.js&quot;</span></code></pre>
 <p>The example above does the exact same thing as <code>vite_entry_tags</code>.</p>
 <h3><a id="using-react" class="anchor" href="#using-react">
   <svg class="octicon-link" aria-hidden="true">
@@ -358,19 +360,6 @@ vite_client_tag
 </a>Documentation</h2>
 <ul>
 <li><a href="https://wout.github.io/lucky_vite/">API (main)</a></li>
-</ul>
-<h2><a id="development" class="anchor" href="#development">
-  <svg class="octicon-link" aria-hidden="true">
-    <use href="#octicon-link"/>
-  </svg>
-</a>Development</h2>
-<p>Make sure you have <a href="https://github.com/f/guardian">Guardian.cr</a> installed. Then run:</p>
-<pre><code class="language-bash">$ guardian</code></pre>
-<p>This will automatically:</p>
-<ul>
-<li>run ameba for src and spec files</li>
-<li>run the relevant spec for any file in src</li>
-<li>run spec file whenever they are saved</li>
 </ul>
 <h2><a id="contributing" class="anchor" href="#contributing">
   <svg class="octicon-link" aria-hidden="true">
