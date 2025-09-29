@@ -156,12 +156,13 @@ If you need different attribtues on style tags than on script tags, you can use 
 ```crystal
 vite_client_tag
 vite_js_link "main.js"
-vite_css_link "main.css"
+vite_css_links "main.js"
 ```
-
 Together they do the exact same thing as `vite_entry_tags`.
 
-**Note**: `vite_css_link` won't output anything in development as stylesheets are dynamically loaded by Vite.
+**Note**: the `vite_css_links` macro takes the main JS entry point as an
+argument, because that's where the CSS is imported. This macro will only
+generate output in production.
 
 #### Full control
 
@@ -170,7 +171,7 @@ If you need even more control over the generated tags, you can use the `asset` m
 ```crystal
 vite_client_tag
 js_link asset("main.js"), type: "module"
-css_link asset("main.css") unless LuckyEnv.development?
+vite_css_links "main.js"
 ```
 
 The example above does the exact same thing as `vite_entry_tags`.
