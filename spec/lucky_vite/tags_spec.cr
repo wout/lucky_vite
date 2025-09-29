@@ -52,7 +52,7 @@ describe LuckyVite::Config do
     end
   end
 
-  describe "#vite_css_link" do
+  describe "#vite_css_links" do
     it "renders nothing in development" do
       LuckyViteCssLinkPage.new(context).render.to_s.should eq ""
     end
@@ -111,7 +111,7 @@ class LuckyViteCssLinkPage
   include Lucky::HTMLPage
 
   def render
-    vite_css_link "main.css", data_css: "link"
+    vite_css_links "main.js", data_css: "link"
     view
   end
 end

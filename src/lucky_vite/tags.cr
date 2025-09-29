@@ -21,12 +21,7 @@ module LuckyVite::Tags
     else
       asset = LuckyVite::AssetHelpers.manifest_entry({{entry}})
       js_link asset[:file], type: "module"{% unless options.empty? %}, {{options.double_splat}}{% end %}
-
-      if styles = asset[:css]?
-        styles.each do |file|
-          css_link file{% unless options.empty? %}, {{options.double_splat}}{% end %}
-        end
-      end
+      vite_css_links({{entry}}, {{options.double_splat}})
     end
   end
 
@@ -40,9 +35,15 @@ module LuckyVite::Tags
   # Generates a stylesheet link tag for the given entrypoint.
   #
   # Additional tag attributes can be passed in as named arguments.
-  macro vite_css_link(entry, **options)
-    unless LuckyEnv.development?
-      css_link LuckyVite::AssetHelpers.asset({{entry}}){% unless options.empty? %}, {{options.double_splat}}{% end %}
+  macro vite_css_links(entry, **options)
+    return if LuckyEnv.development?
+
+    asset = LuckyVite::AssetHelpers.manifest_entry({{entry}})
+
+    return unless styles = asset[:css]?
+
+    styles.each do |file|
+      css_link file{% unless options.empty? %}, {{options.double_splat}}{% end %}
     end
   end
 
