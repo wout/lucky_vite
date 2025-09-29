@@ -239,20 +239,6 @@ Here's a bit more info about the available properties:
 
 - [API (main)](https://wout.github.io/lucky_vite/)
 
-## Development
-
-Make sure you have [Guardian.cr](https://github.com/f/guardian) installed. Then run:
-
-```bash
-$ guardian
-```
-
-This will automatically:
-
-- run ameba for src and spec files
-- run the relevant spec for any file in src
-- run spec file whenever they are saved
-
 ## Contributing
 
 We use [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/) for our commit messages, so please adhere to that pattern.
