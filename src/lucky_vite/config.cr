@@ -1,3 +1,5 @@
+require "json"
+
 struct LuckyVite::Config
   include JSON::Serializable
 
