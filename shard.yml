@@ -12,9 +12,6 @@ development_dependencies:
   ameba:
     github: crystal-ameba/ameba
     branch: master
-  spec_mirror:
-    github: wout/spec_mirror.cr
-    branch: master
   lucky:
     github: luckyframework/lucky
   lucky_env:
