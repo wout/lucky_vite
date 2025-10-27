@@ -89,7 +89,7 @@ private struct LuckyViteAssetManifestBuilder
     @assets_dir : String?
 
     @[JSON::Field(key: "outDir")]
-    getter out_dir : String = "public/assets"
+    getter out_dir : String = "public"
     getter aliases : Array(String) = %w[js css images fonts]
 
     def assets_dir

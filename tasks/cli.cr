@@ -90,7 +90,7 @@ module LuckyVite
           "images",
           "fonts"
         ],
-        "outDir": "public/assets",
+        "outDir": "public",
         "entry": "entry",
         "host": "127.0.0.1",
         "port": 3010,

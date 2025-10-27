@@ -107,11 +107,10 @@ notice "Compiling assets"
 # ...
 ```
 
-
 ### Further steps
 
 - if you use the CI workflow for Github Actions, you need to change `yarn prod` into `yarn build` in `ci.yml`
-- you may want to exclude Vite's `outDir` (e.g. `public/assets`) from the repo
+- you may want to exclude `public/.vite`, `public/css`, `public/fonts`, `public/images`, and `public/js` from the repo
 - all the `laravel-mix` dependencies can be removed from from `package.json`
 - `webpack.mix.js` can be removed
 
@@ -160,6 +159,7 @@ vite_client_tag
 vite_js_link "main.js", defer: true
 vite_css_links "main.js"
 ```
+
 Together they do the exact same thing as `vite_entry_tags`.
 
 **Note**: the `vite_css_links` macro takes the main JS entry point as an argument, because that's where the CSS is imported. This macro will only generate output in production.
@@ -203,7 +203,7 @@ Lucky and Vite share some information which is managed through the `config/lucky
 ```json
 {
   "aliases": ["css", "fonts", "images", "js"],
-  "outDir": "public/assets",
+  "outDir": "public",
   "root": "src/js",
   "entry": "entry",
   "host": "127.0.0.1",
@@ -217,7 +217,7 @@ Here's a bit more info about the available properties:
   - _default_: `["js", "css", "images", "fonts"]`)
   - _example_: `@images` becomes `src/images`
 - **`outDir`** (_`string`_): the target dir for Vite
-  - _default_: `"public/assets"`
+  - _default_: `"public"`
   - _note_: this will be cleared on every run
 - **`root`** (_`string`_): the javascript root
   - _default_: `"src/js"`

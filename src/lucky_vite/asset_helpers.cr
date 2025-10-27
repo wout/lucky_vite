@@ -7,7 +7,7 @@ module LuckyVite::AssetHelpers
   #
   # ```
   # # In src/app.cr comment out the native manifest loader and add:
-  # LuckyVite::AssetHelpers.load_manifest("public/assets/manifest.json")
+  # LuckyVite::AssetHelpers.load_manifest
   # ```
   #
   # Note: Vite generates its manifest inside the assets dir.
@@ -20,7 +20,7 @@ module LuckyVite::AssetHelpers
   #
   # ```
   # # In a page or component:
-  # # Will find the asset in `public/assets/images/logo.a1b2c3d4.png`
+  # # Will find the asset in `public/images/logo.a1b2c3d4.png`
   # img src: asset("images/logo.png")
   #
   # # Can also be used elsewhere by prepending LuckyVite::AssetHelpers
@@ -86,7 +86,7 @@ module LuckyVite::AssetHelpers
   #
   # ```
   # # In a page or component
-  # # Will find the asset in `public/assets/images/logo.a1b2c3d4.png`
+  # # Will find the asset in `public/images/logo.a1b2c3d4.png`
   # img src: dynamic_asset("images/logo.png")
   #
   # # Can also be used elsewhere by prepending LuckyVite::AssetHelpers
