@@ -42,8 +42,9 @@ module LuckyVite::Tags
 
     return unless styles = asset[:css]?
 
-    styles.each do |file|
-      css_link LuckyVite::AssetHelpers.dynamic_asset(file){% unless options.empty? %}, {{options.double_splat}}{% end %}
+    styles.each do |style|
+      file = File.join(Lucky::Server.settings.asset_host, style)
+      css_link file{% unless options.empty? %}, {{options.double_splat}}{% end %}
     end
   end
 
