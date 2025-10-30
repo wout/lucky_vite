@@ -3,7 +3,7 @@ require "lucky"
 require "lucky_env"
 require "../src/lucky_vite"
 
-LuckyVite::AssetHelpers.load_manifest
+LuckyVite::AssetHelpers.load_manifest("public/manifest.json")
 
 def read_fixture(file : String) : IO
   path = "#{__DIR__}/fixtures/#{file}"

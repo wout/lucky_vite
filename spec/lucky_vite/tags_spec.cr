@@ -32,8 +32,8 @@ describe LuckyVite::Config do
       contents = LuckyViteEntryTagsPage.new(context).render.to_s
 
       contents.should_not contain "@vite/client"
-      contents.should contain %(<script src="/assets/js/main.2d2335c4.js" type="module" data-entry="tags"></script>)
-      contents.should contain %(<link href="/assets/css/main.75de05d8.css" rel="stylesheet" media="screen" data-entry="tags">)
+      contents.should contain %(<script src="/js/main.2d2335c4.js" type="module" data-entry="tags"></script>)
+      contents.should contain %(<link href="/css/main.75de05d8.css" rel="stylesheet" media="screen" data-entry="tags">)
     end
   end
 
@@ -48,7 +48,7 @@ describe LuckyVite::Config do
       ENV["LUCKY_ENV"] = "production"
       contents = LuckyViteJsLinkPage.new(context).render.to_s
 
-      contents.should contain %(<script src="/assets/js/main.2d2335c4.js" type="module" data-js="link"></script>)
+      contents.should contain %(<script src="/js/main.2d2335c4.js" type="module" data-js="link"></script>)
     end
   end
 
@@ -61,7 +61,7 @@ describe LuckyVite::Config do
       ENV["LUCKY_ENV"] = "production"
       contents = LuckyViteCssLinkPage.new(context).render.to_s
 
-      contents.should contain %(<link href="/assets/css/main.75de05d8.css" rel="stylesheet" media="screen" data-css="link">)
+      contents.should contain %(<link href="/css/main.75de05d8.css" rel="stylesheet" media="screen" data-css="link">)
     end
   end
 
