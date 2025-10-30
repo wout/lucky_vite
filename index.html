@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Crystal Docs 1.16.3">
+<meta name="generator" content="Crystal Docs 1.17.1">
 <meta name="crystal_docs.project_version" content="main">
 <meta name="crystal_docs.project_name" content="lucky_vite">
 
@@ -221,7 +221,7 @@ notice &quot;Compiling assets&quot;
 </a>Further steps</h3>
 <ul>
 <li>if you use the CI workflow for Github Actions, you need to change <code>yarn prod</code> into <code>yarn build</code> in <code>ci.yml</code></li>
-<li>you may want to exclude Vite's <code>outDir</code> (e.g. <code>public/assets</code>) from the repo</li>
+<li>you may want to exclude <code>public/.vite</code>, <code>public/css</code>, <code>public/fonts</code>, <code>public/images</code>, and <code>public/js</code> from the repo</li>
 <li>all the <code>laravel-mix</code> dependencies can be removed from from <code>package.json</code></li>
 <li><code>webpack.mix.js</code> can be removed</li>
 </ul>
@@ -299,7 +299,7 @@ vite_client_tag
 <p>Lucky and Vite share some information which is managed through the <code>config/lucky_vite.json</code> file. It comes with the following defaults:</p>
 <pre><code class="language-json">{
   &quot;aliases&quot;: [&quot;css&quot;, &quot;fonts&quot;, &quot;images&quot;, &quot;js&quot;],
-  &quot;outDir&quot;: &quot;public/assets&quot;,
+  &quot;outDir&quot;: &quot;public&quot;,
   &quot;root&quot;: &quot;src/js&quot;,
   &quot;entry&quot;: &quot;entry&quot;,
   &quot;host&quot;: &quot;127.0.0.1&quot;,
@@ -315,7 +315,7 @@ vite_client_tag
 </li>
 <li><strong><code>outDir</code></strong> (<em><code>string</code></em>): the target dir for Vite
 <ul>
-<li><em>default</em>: <code>&quot;public/assets&quot;</code></li>
+<li><em>default</em>: <code>&quot;public&quot;</code></li>
 <li><em>note</em>: this will be cleared on every run</li>
 </ul>
 </li>
