@@ -31,9 +31,9 @@ dependencies:
     github: wout/lucky_vite
 ```
 
-2. Run `shards install`
+1. Run `shards install`
 
-3. Run `yarn add -D vite vite-plugin-lucky` to install Vite and the plugin for Lucky
+2. Run `yarn add -D vite vite-plugin-lucky` to install Vite and the plugin for Lucky
 
 > [!Note]
 > Look at [vite-plugin-lucky](https://github.com/wout/vite-plugin-lucky) for more info about the plugin.
@@ -91,8 +91,8 @@ Change the scripts section in `package.json` to use vite instead of laravel mix:
 -    "watch": "yarn run mix watch",
 -    "prod": "yarn run mix --production",
 +    "heroku-postbuild": "yarn build",
-+    "build": "yarn run vite build",
-+    "watch": "yarn run vite build --watch"
++    "build": "vite",
++    "watch": "vite build --watch"
   },
   // ...
 }
