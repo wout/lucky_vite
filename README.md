@@ -21,6 +21,14 @@ Lucky Vite
   <img src="https://img.shields.io/github/actions/workflow/status/wout/lucky_vite/ci.yml?branch=main" title="GitHub Workflow Status"/>
 </div>
 
+> [!IMPORTANT]
+> Lucky now has a built-in front-end asset bundler built-in based on Bun. It
+> has CSS hot-reloading, fingerprinting, live reload, and a flexible plugin
+> system, and zero development dependencies and it lightning fast.
+>
+> Therefore this shard will no longer receive updates and will be archived
+> soon.
+
 ## Installation
 
 1. Add the dependency to your `shard.yml`:
