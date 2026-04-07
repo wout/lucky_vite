@@ -18,7 +18,6 @@ Lucky Vite
 <div align="center">
   <img src="https://img.shields.io/github/license/wout/lucky_vite" title="Github"/>
   <img src="https://img.shields.io/github/v/tag/wout/lucky_vite" title="GitHub tag (latest SemVer)"/>
-  <img src="https://img.shields.io/github/actions/workflow/status/wout/lucky_vite/ci.yml?branch=main" title="GitHub Workflow Status"/>
 </div>
 
 > [!IMPORTANT]
