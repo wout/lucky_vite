@@ -22,10 +22,9 @@ Lucky Vite
 </div>
 
 > [!IMPORTANT]
-> **07 April 2026**: Lucky now has a built-in front-end asset bundler built-in
-> based on Bun. It has CSS hot-reloading, fingerprinting, live reload, a
-> flexible plugin system, zero development dependencies, and it is lightning
-> fast.
+> **07 April 2026**: Lucky now has a front-end asset bundler built-in based on
+> Bun. It has CSS hot-reloading, fingerprinting, live reload, a flexible plugin
+> system, zero development dependencies, and it is lightning fast.
 >
 > Therefore this shard will no longer receive updates and will be archived
 > soon.
